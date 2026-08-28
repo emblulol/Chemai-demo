@@ -8,8 +8,15 @@
 
   function escText(s){ return String(s===null||s===undefined?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
 
-  function _lsGet(k, d){ try{ var s=localStorage.getItem(k); if(s===null||s===undefined||s==='') return d; try{ return JSON.parse(s); }catch(e){ return d; } }catch(e){ return d; } }
-  function _lsSet(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  /* v73：记录按用户命名空间读写（window.ChemAIUser 由 assistant.html 注入）；无则回退旧扁平 key，兼容独立测试 */
+  function _lsGet(k, d){
+    try{ var U=window.ChemAIUser; if(U&&U.lsGet){ return U.lsGet(String(k).replace(/^chemai_/, ''), d); } }catch(e){}
+    try{ var s=localStorage.getItem(k); if(s===null||s===undefined||s==='') return d; try{ return JSON.parse(s); }catch(e){ return d; } }catch(e){ return d; }
+  }
+  function _lsSet(k, v){
+    try{ var U=window.ChemAIUser; if(U&&U.lsSet){ U.lsSet(String(k).replace(/^chemai_/, ''), v); return; } }catch(e){}
+    try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){}
+  }
 
   /* ---------- 模式 id 列表（与 IIFE 的 MODE_RECIPES 对齐） ---------- */
   var MODE_IDS=['study','deep','quiz','research','visual','mastery'];
@@ -230,6 +237,7 @@
     var out=data||{};
     var payload={
       exportedAt:new Date().toISOString(),
+      user:out.user||null,
       mastery:out.mastery||null,
       wrong:out.wrong||[],
       feedback:out.feedback||[],

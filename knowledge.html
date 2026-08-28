@@ -655,6 +655,7 @@ async function loadData(){
   }catch(err){ /* localStorage 不可用或数据损坏时忽略 */ }
 
   initGraph(kg);
+  resolveDeepLink();
   $('#loadingOv').hidden = true;
 }
 function showError(err){
@@ -716,6 +717,38 @@ function initGraph(kg){
   requestAnimationFrame(frame);
   // 调试/测试句柄（只读用途）
   window.__kg = {nodes, links, view, nodeById, chainSet, pathOf, setMaxLevel, parentOf};
+}
+
+/* 深链定位：支持 knowledge.html?node=<id|节点名|子领域>，从 AI 助手「知识延伸」跳转直达某节点。
+ * 子领域命中时取「层级最浅 + 连接最多」的中心节点；对 FAQ 有而 KG 无的子领域用别名映射兜底。 */
+const SUBFIELD_ALIAS = {
+  '配位化学理论': 'coord',              // → 配位化学（L1）
+  '实验操作': 'center-exp',             // → 三草酸合铁酸钾制备实验（总览 hub）
+  '反应原理': 'redox',                  // → 氧化还原化学（L1）
+  '安全与废物处理': 'safety-direction', // → 实验安全与环保（L1）
+  '高等理论': 'physical',               // → 物理/结构化学（L1）
+  '化学史': 'tassaert-discovery'        // → 塔萨厄尔发现（配位化学史）
+};
+function resolveDeepLink(){
+  try{
+    const p = new URLSearchParams(location.search).get('node');
+    if(!p) return;
+    const q0 = p.trim();
+    if(!q0) return;
+    const q = SUBFIELD_ALIAS[q0] || q0;                 // 先做 FAQ→KG 别名兜底
+    let target = null;
+    if(nodeById.has(q)) target = nodeById.get(q);       // 1) 精确 id
+    else target = nodes.find(n=>n.name===q)             // 2) 节点名精确
+               || nodes.find(n=>n.name.indexOf(q)>=0);  // 3) 节点名包含
+    if(!target){                                         // 4) 子领域：最中心（层级最浅、连接最多）
+      const bySub = nodes.filter(n=>n.subfield===q);
+      if(bySub.length){
+        bySub.sort((a,b)=>((a.level||0)-(b.level||0)) || ((b.relatedNodes||[]).length-(a.relatedNodes||[]).length));
+        target = bySub[0];
+      }
+    }
+    if(target) requestAnimationFrame(()=>requestAnimationFrame(()=>selectNode(target.id)));
+  }catch(e){}
 }
 
 /* ==================== 知识树构建（parent 字段优先，回退推导） ==================== */
