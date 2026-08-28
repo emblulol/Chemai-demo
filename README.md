@@ -176,12 +176,13 @@ npx serve .                     # Node.js
 
 ## 版本历史
 
-> 版本线 v30 → v71（2026-07 至 2026-08-23）。v45 起版本号由「语料自学习轮次 + UI 注入脚本」共同承载。
+> 版本线 v30 → v73（2026-07 至 2026-08-28）。v45 起版本号由「语料自学习轮次 + UI 注入脚本」共同承载。
 
-### 近期（v56 → v71）
+### 近期（v56 → v73）
 
 | 版本 | 日期 | 主要变更 |
 |------|------|----------|
+| **v73** | 08-28 | **UI 重构 + 身份/记录**：首次进入「身份选择→学号识别」闸门 + 用户档案（uid/name/role）与按用户隔离的学习记录；教学流程步骤条（按身份展示学习/教学闭环）；控制收敛（去 6 工作模式 pills，只留正常/集群）；站内跳转（内部链接同窗）；知识图谱深链（`?node=` 深链 + `SUBFIELD_ALIAS`）；agent 管道修复（LLM 答案补质检/讲义核对、竞态修复、技能卡时序） |
 | **v71** | 08-23 | **学术追踪 + 知识星链（闻道④⑤）**：corpus 页新增「📡 学术追踪·领域动态」区——课题前沿·近期文献(按 `e.year` 降序取 8，卡上年份徽章+子领域/文献类型) + 📅 年份趋势 chips(点某年下钻到知识清单、再点取消) + 🔗 知识星链(基于收藏，按子领域+关键词对语料计分取 top3 生成关联节点)；收藏按钮点击即时刷新星链。`state.year` 过滤 + `renderAcademicTrack`/`buildStarChain`/`_tok`；修 `assistant-model.js`(defer 加载)致老用户收藏态/星链首屏空态——`DOMContentLoaded` 补齐 `refreshList()`+`renderAcademicTrack()` |
 | **v70** | 08-23 | **闻道三功能（①②③）**：② 知识库多源枢纽——corpus `#doctypeSel` 来源类型分面 + A 区来源类型分布条形图(点击下钻)；③ 收藏+笔记——`chemai_favorites_v1`(数组)/`chemai_notes_v1`(map) 纯函数挂 `window.AssistantModel`，覆盖 corpus 行(📌/✏️)+knowledge 面板+精通之路汇总区并入学习画像导出；① 多文献横向对比——`AUTHORITY_RULES` 每条加只读 `param`/`lecture` 字段(已核验向后兼容) + 纯函数 `extractParamCompare`/`buildCompareTableHTML`，研究答案尾部自动追加「📊 多文献横向对比·讲义最高权威」卡(⚠=与讲义不符) |
 | **v69** | 08-22/23 | **助手模型化改造**：`assets/assistant-model.js`——6 工作模式(对照 `MODE_RECIPES`) + 🧠 思考链面板 + 打字机流式渲染(`buildStagedBlocks`/`Typewriter`) + 计划/可视化/精通之路仪表盘 + SM-2 间隔复习(`srsSchedule`/`srsMerge`/`srsDueToday`) + 学习画像导出；Phase2 学习闭环(掌握度测评/反馈重排/复习外推)完成；`npm test` 新增该模块纯函数单测 |
