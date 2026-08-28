@@ -22,7 +22,7 @@
   --em:#10b981; --teal:#2dd4bf; --purple:#a78bfa; --yellow:#fbbf24; --red:#f87171; --blue:#60a5fa;
   --t1:#f1f5f9; --t2:#94a3b8; --t3:#64748b;
   --bd:rgba(148,163,184,.08); --bd2:rgba(148,163,184,.15);
-  --grad:linear-gradient(135deg,#10b981,#2dd4bf,#60a5fa);
+  --grad:linear-gradient(135deg,#10b981,#2dd4bf);
   --shadow:0 8px 28px rgba(2,6,23,.45);
 }
 [data-theme="light"]{color-scheme:light;--bg:#f5f7fa;--bg2:#eaeef4;--card:#ffffff;--hover:#e8ecf2;--card-hover:#e8ecf2;--t1:#1f2937;--t2:#475569;--t3:#64748b;--txt:#1f2937;--txt2:#475569;--txt3:#64748b;--bd:rgba(15,23,42,.08);--bd2:rgba(15,23,42,.16);--border:rgba(15,23,42,.08);--border2:rgba(15,23,42,.16);--shadow:0 8px 24px rgba(15,23,42,.08)}[data-theme="light"] .navbar{background:rgba(255,255,255,.82)}.theme-toggle{background:var(--bg2);border:1px solid var(--bd2);color:var(--t2);width:34px;height:34px;border-radius:10px;cursor:pointer;font-size:15px;display:inline-flex;align-items:center;justify-content:center;transition:.25s;flex-shrink:0;line-height:1}.theme-toggle:hover{border-color:var(--em);color:var(--em);transform:translateY(-1px)}body{animation:chemaiFade .45s ease}@keyframes chemaiFade{from{opacity:0}to{opacity:1}}
@@ -43,7 +43,7 @@ a:hover{color:var(--em)}
 ::-webkit-scrollbar-track{background:transparent}
 
 /* ===== 顶部导航（全站统一 navbar） ===== */
-.navbar{position:sticky;top:0;z-index:100;background:rgba(10,14,26,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--bd2)}
+.navbar{position:sticky;top:0;z-index:100;background:var(--bg2);border-bottom:1px solid var(--bd2)}
 .nav-inner{max-width:1280px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;gap:16px}
 .logo{display:flex;align-items:center;gap:12px;flex-shrink:0;cursor:pointer}
 .logo-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;background:linear-gradient(135deg,rgba(16,185,129,.25),rgba(45,212,191,.12));border:1px solid rgba(16,185,129,.35);animation:chemaiPulse 3.5s ease-in-out infinite}
@@ -71,7 +71,6 @@ a:hover{color:var(--em)}
 .stat-cards{display:flex;gap:12px;margin-bottom:18px;flex-wrap:wrap}
 .stat-card{flex:1;min-width:120px;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;transition:.2s;box-shadow:var(--shadow)}
 .stat-card:hover{border-color:rgba(16,185,129,.3);transform:translateY(-1px)}
-.stat-icon{font-size:28px;flex-shrink:0}
 .stat-info{display:flex;flex-direction:column}
 .stat-num{font-size:22px;font-weight:700;color:var(--t1);line-height:1.2}
 .stat-label{font-size:11px;color:var(--t3)}
@@ -501,19 +500,19 @@ details.ref-fold[open]>summary .rf-arrow{transform:rotate(90deg)}
   <div id="flowBar"></div>
 
   <div class="stat-cards">
-    <div class="stat-card"><span class="stat-icon">📚</span><div class="stat-info"><span class="stat-num" id="statCorpus">—</span><span class="stat-label">知识清单文献</span></div></div>
-    <div class="stat-card"><span class="stat-icon">🧠</span><div class="stat-info"><span class="stat-num" id="statFAQ">—</span><span class="stat-label">内置问答条目</span></div></div>
-    <div class="stat-card"><span class="stat-icon">🔗</span><div class="stat-info"><span class="stat-num">24</span><span class="stat-label">知识图谱类比规则</span></div></div>
-    <div class="stat-card"><span class="stat-icon">🎯</span><div class="stat-info"><span class="stat-num">10</span><span class="stat-label">掌握度测评知识点</span></div></div>
+    <div class="stat-card"><div class="stat-info"><span class="stat-num" id="statCorpus">—</span><span class="stat-label">知识清单文献</span></div></div>
+    <div class="stat-card"><div class="stat-info"><span class="stat-num" id="statFAQ">—</span><span class="stat-label">内置问答条目</span></div></div>
+    <div class="stat-card"><div class="stat-info"><span class="stat-num">24</span><span class="stat-label">知识图谱类比规则</span></div></div>
+    <div class="stat-card"><div class="stat-info"><span class="stat-num">10</span><span class="stat-label">掌握度测评知识点</span></div></div>
   </div>
 
   <div class="grid">
     <section class="col-main">
       <div class="tabs" role="tablist">
-        <button class="tab on" data-mode="qa" role="tab">💬 直接问答<span>智能体集群 · 多策略检索 → 类比推理 → 置信度评分 → 自我检查</span></button>
-        <button class="tab" data-mode="assess" role="tab">📝 掌握度测评<span>10 个知识点 · 权重满分 105 · 轮次 10~20 动态调整</span></button>
-        <button class="tab" data-mode="tools" role="tab">🧮 计算工具<span>摩尔质量 · 产率 · 溶液配制 · Ksp · 滴定</span></button>
-        <button class="tab" data-mode="wrong" role="tab">📒 错题本<span>薄弱知识点记录 · 题库联动练习</span></button>
+        <button class="tab on" data-mode="qa" role="tab">直接问答<span>智能体集群 · 多策略检索 → 类比推理 → 置信度评分 → 自我检查</span></button>
+        <button class="tab" data-mode="assess" role="tab">掌握度测评<span>10 个知识点 · 权重满分 105 · 轮次 10~20 动态调整</span></button>
+        <button class="tab" data-mode="tools" role="tab">计算工具<span>摩尔质量 · 产率 · 溶液配制 · Ksp · 滴定</span></button>
+        <button class="tab" data-mode="wrong" role="tab">错题本<span>薄弱知识点记录 · 题库联动练习</span></button>
       </div>
 
       <!-- ========== Tab 1 直接问答 ========== -->
@@ -531,13 +530,13 @@ details.ref-fold[open]>summary .rf-arrow{transform:rotate(90deg)}
           <input type="file" id="qaFileInput" accept=".txt,.docx,.pdf,.pptx" style="display:none">
           <textarea id="qaInput" rows="1" placeholder="输入你的问题…（可先 📎 上传文件，让助手基于文件内容分析；Enter 发送，Shift+Enter 换行）"></textarea>
           <button class="btn primary" id="qaSend">发送 ➤</button>
-          <details class="composer-advanced" id="chatModeShell">
-            <summary>⚙️ 高级通道</summary>
+          <div class="composer-advanced" style="display:flex;align-items:center;gap:6px">
+            <span style="font-size:11px;color:var(--t3);flex-shrink:0">模式</span>
             <div class="mode-switch" id="chatModeSwitch" title="回答模式：正常=快速本地答案；集群=智能体集群+网页研究">
-              <button class="mode-btn" data-mode="normal">💬 正常</button>
-              <button class="mode-btn" data-mode="cluster">🧠 集群</button>
+              <button class="mode-btn" data-mode="normal">正常</button>
+              <button class="mode-btn" data-mode="cluster">集群</button>
             </div>
-          </details>
+          </div>
         </div>
       </section>
 
@@ -565,7 +564,7 @@ details.ref-fold[open]>summary .rf-arrow{transform:rotate(90deg)}
       <!-- ========== Tab 3 计算工具 ========== -->
       <section id="panel-tools" class="panel hidden">
         <div class="panel-bar">
-          <div class="panel-title">🧮 化学计算工具</div>
+          <div class="panel-title">化学计算工具</div>
           <span class="muted">输入数值即可计算，专为本实验常用计算设计</span>
         </div>
         <div class="calc-wrap">
@@ -583,7 +582,7 @@ details.ref-fold[open]>summary .rf-arrow{transform:rotate(90deg)}
       <!-- ========== Tab 4 错题本 ========== -->
       <section id="panel-wrong" class="panel hidden">
         <div class="panel-bar">
-          <div class="panel-title">📒 错题本 · 学习画像</div>
+          <div class="panel-title">错题本 · 学习画像</div>
           <button class="btn ghost sm" onclick="clearWrongBook()">🗑 清空错题本</button>
         </div>
         <div id="wrongStats" class="wrong-stats"></div>
@@ -594,7 +593,7 @@ details.ref-fold[open]>summary .rf-arrow{transform:rotate(90deg)}
     <!-- ========== 常驻外部资源面板 ========== -->
     <aside class="col-side">
 	      <div class="side-card" id="llmConfig" style="border-color:rgba(16,185,129,.4)">
-	        <h3>🤖 LLM AI 配置</h3>
+	        <h3>LLM AI 配置</h3>
 	        <div style="margin-bottom:6px">
 	          <label style="font-size:11px;color:var(--t3);display:block;margin-bottom:2px">API Key (DeepSeek/OpenAI)</label>
 	          <input type="password" id="llmKeyInput" placeholder="sk-..." style="width:100%;padding:6px 9px;background:var(--bg2);border:1px solid var(--bd2);border-radius:7px;color:var(--t1);font-size:11px;font-family:monospace" />
@@ -617,12 +616,12 @@ details.ref-fold[open]>summary .rf-arrow{transform:rotate(90deg)}
 
 
       <div class="side-card">
-        <h3>🧯 MSDS 安全数据库</h3>
+        <h3>MSDS 安全数据库</h3>
         <a class="side-link" href="https://www.chemicalbook.com/" target="_blank" rel="noopener"><b>ChemicalBook</b><span>化学品安全技术说明书（MSDS）检索</span></a>
         <a class="side-link" href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank" rel="noopener"><b>PubChem</b><span>NIH 化合物性质 / 安全 / 毒理数据</span></a>
       </div>
       <div class="side-card">
-        <h3>🎬 视频资源</h3>
+        <h3>视频资源</h3>
         <details class="side-collapse">
           <summary>📼 本地教学视频（4 部）</summary>
           <div class="side-video-wrap">
@@ -661,14 +660,14 @@ details.ref-fold[open]>summary .rf-arrow{transform:rotate(90deg)}
           <a class="side-link" href="https://www.bilibili.com/video/BV1XsVD6NEoW" target="_blank" rel="noopener"><b>制备硫酸亚铁铵（摩尔盐）</b><span>bilibili · 原料合成</span></a>
           <a class="side-link" href="https://www.bilibili.com/video/BV1PsAdzsEr1" target="_blank" rel="noopener"><b>【蓝晒】超高速两步法蓝晒</b><span>bilibili · 光化学拓展</span></a>
         </details>
-        <a class="side-link" href="index.html#/videos"><b>📺 站内视频中心</b><span>更多操作视频合集</span></a>
+        <a class="side-link" href="index.html#/videos"><b>站内视频中心</b><span>更多操作视频合集</span></a>
       </div>
       <div class="side-card">
-        <h3>📖 学习资源</h3>
-        <a class="side-link" href="knowledge.html"><b>🧭 知识图谱</b><span>知识点关联网络 · 查漏补缺</span></a>
-        <a class="side-link" href="corpus.html"><b>📚 语料库</b><span>365 篇文献知识清单 · 支持上传学习</span></a>
-        <a class="side-link" href="prep.html"><b>📝 课前预习</b><span>多轮对话预习 + 习题检测</span></a>
-        <a class="side-link" href="index.html#/explore" data-role-gate="non-chemistry"><b>🔬 科普探索</b><span>蓝晒 · 光化学 · 配合物拓展</span></a>
+        <h3>学习资源</h3>
+        <a class="side-link" href="knowledge.html"><b>知识图谱</b><span>知识点关联网络 · 查漏补缺</span></a>
+        <a class="side-link" href="corpus.html"><b>语料库</b><span>365 篇文献知识清单 · 支持上传学习</span></a>
+        <a class="side-link" href="prep.html"><b>课前预习</b><span>多轮对话预习 + 习题检测</span></a>
+        <a class="side-link" href="index.html#/explore" data-role-gate="non-chemistry"><b>科普探索</b><span>蓝晒 · 光化学 · 配合物拓展</span></a>
       </div>
     </aside>
   </div>
@@ -3834,7 +3833,6 @@ window.favAct=function(id,act){
 
 /* 统计数字渐变 */
 .stat-num{font-size:24px;background:linear-gradient(90deg,var(--em),var(--teal),var(--blue));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.stat-icon{filter:drop-shadow(0 2px 5px rgba(16,185,129,.3))}
 
 /* 分区标题装饰条 */
 .section-title h2,.sec-title h2,.card-title h2,.panel-title,.rp-sec h3{position:relative;padding-left:14px}
@@ -3875,7 +3873,7 @@ window.favAct=function(id,act){
 body::after{content:"";position:fixed;inset:auto;width:560px;height:560px;left:-180px;top:-140px;z-index:0;pointer-events:none;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.16),transparent 68%);filter:blur(70px);animation:chemaiDrift 26s ease-in-out infinite}
 @keyframes chemaiDrift{0%,100%{transform:translate(0,0)}33%{transform:translate(90px,60px) scale(1.08)}66%{transform:translate(30px,-50px)}}
 /* 导航: 更透毛玻璃 + 激活/悬浮下划线动画 */
-.navbar{backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid rgba(45,212,191,.14)}
+.navbar{border-bottom:1px solid rgba(45,212,191,.14)}
 .nav-links a{position:relative;isolation:isolate}
 .nav-links a::after{content:"";position:absolute;left:11px;right:11px;bottom:3px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--em,var(--emerald,#10b981)),var(--teal,#2dd4bf));transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.8,.3,1);box-shadow:0 0 10px rgba(45,212,191,.55)}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
@@ -3987,37 +3985,13 @@ footer{border-top:1px solid rgba(45,212,191,.15);background:linear-gradient(180d
 [data-theme="light"] .mode-switch .mode-btn.active{color:#fff}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-</style>
-<script>
-/* 滚动显现 v47：位移/缩放更大，逐项错落 */
-document.addEventListener('DOMContentLoaded',function(){
-  if(!('IntersectionObserver' in window)) return;
-  try{
-    var els=document.querySelectorAll('.card,.side-card,.calc-card,.wrong-item,.doc-card,.qcard,.learn-card,.banner,.stat-card,.tab');
-    var fold=[];
-    for(var i=0;i<els.length;i++){
-      var r=els[i].getBoundingClientRect();
-      if(r.top>window.innerHeight-60 && r.bottom>0){
-        var d=(i%7)*55;
-        els[i].style.opacity='0'; els[i].style.transform='translateY(46px) scale(.95)';
-        els[i].style.transition='opacity .55s ease '+d+'ms,transform .7s cubic-bezier(.2,.9,.3,1.18) '+d+'ms';
-        fold.push(els[i]);
-      }
-    }
-    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='none'; io.unobserve(e.target); } }); },{threshold:.08});
-    fold.forEach(function(el){ io.observe(el); });
-  }catch(e){}
-});
-</script>
-<style id="polish-v63">
 /* v63 精致化：主工作面 .panel 悬浮环形辉光 + .panel-title 强调条 + --radius 令牌统一 */
 :root{ --radius:16px; }
 .panel-title{ position:relative; }
 .panel-title::before{ content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:4px;height:1.05em;border-radius:2px;background:linear-gradient(180deg,#10b981,#2dd4bf); }
 .panel:hover{ border-color:var(--emerald,#10b981); box-shadow:0 18px 44px rgba(0,0,0,.26); box-shadow:0 0 0 1px color-mix(in srgb,var(--emerald,#10b981) 40%,transparent),0 18px 44px rgba(0,0,0,.26); transition:box-shadow .25s ease,border-color .25s ease; }
 @media (prefers-reduced-motion:reduce){ .panel:hover{ box-shadow:0 0 0 1px rgba(16,185,129,.4); box-shadow:0 0 0 1px color-mix(in srgb,var(--emerald,#10b981) 40%,transparent); } }
-</style>
-<style id="model-v1">
+
 /* v69 模型化：落地页 hero + 6 模式药丸 + 思考链 + 逐字打字机 + 精通之路/计划/可视化 */
 .hero{text-align:center;padding:24px 16px 14px;max-width:920px;margin:0 auto}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--emerald,#10b981);background:rgba(16,185,129,.10);border:1px solid rgba(16,185,129,.22);padding:5px 14px;border-radius:999px;margin-bottom:14px}
@@ -4028,8 +4002,6 @@ document.addEventListener('DOMContentLoaded',function(){
 /* composer 放大 */
 .composer.model-hero-composer{padding-right:14px}
 .composer-advanced{margin:0;font-size:12px;color:var(--t3,#7c879c);padding-bottom:2px}
-.composer-advanced summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:4px}
-.composer-advanced[open]{margin-top:6px}
 /* 思考链 */
 .reasoning{background:rgba(16,185,129,.05);border:1px solid rgba(148,163,184,.14);border-radius:var(--radius,16px);margin:10px 0;overflow:hidden}
 .reasoning>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:10px 16px;font-size:13.5px;color:var(--t1,#f1f5f9)}
@@ -4062,8 +4034,7 @@ document.addEventListener('DOMContentLoaded',function(){
 .srs-card .sc-meta{font-size:11.5px;color:var(--t3,#7c879c);margin-bottom:8px}
 @media (max-width:640px){.hero{padding:24px 12px 14px}.hero-cta{font-size:13px;padding:7px 16px}}
 @media (prefers-reduced-motion:reduce){.tw-ghost::after{animation:none}}
-</style>
-<style id="role-style">
+
 /* v65 身份化语言风格：收尾追问 + 白话版深度门控（切换器 UI 已移除） */
 .role-outro{margin-top:6px}
 .role-outro .ro-txt{font-size:12px;color:var(--t3,#7c879c);margin-bottom:6px}
@@ -4079,6 +4050,27 @@ document.addEventListener('DOMContentLoaded',function(){
 .role-plain .ans-sub,.role-plain .ans-sup{opacity:.5;color:var(--t3,#7c879c)}
 .role-plain .rich-answer{line-height:1.8}
 </style>
-<script src="assets/bg-particles.js" defer></script>
+<link rel="stylesheet" href="assets/hallmark.css">
+<script>
+/* 滚动显现 v47：位移/缩放更大，逐项错落 */
+document.addEventListener('DOMContentLoaded',function(){
+  if(!('IntersectionObserver' in window)) return;
+  try{
+    var els=document.querySelectorAll('.card,.side-card,.calc-card,.wrong-item,.doc-card,.qcard,.learn-card,.banner,.stat-card,.tab');
+    var fold=[];
+    for(var i=0;i<els.length;i++){
+      var r=els[i].getBoundingClientRect();
+      if(r.top>window.innerHeight-60 && r.bottom>0){
+        var d=(i%7)*55;
+        els[i].style.opacity='0'; els[i].style.transform='translateY(46px) scale(.95)';
+        els[i].style.transition='opacity .55s ease '+d+'ms,transform .7s cubic-bezier(.2,.9,.3,1.18) '+d+'ms';
+        fold.push(els[i]);
+      }
+    }
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='none'; io.unobserve(e.target); } }); },{threshold:.08});
+    fold.forEach(function(el){ io.observe(el); });
+  }catch(e){}
+});
+</script>
 </body>
 </html>

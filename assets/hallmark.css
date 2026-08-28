@@ -1,0 +1,14 @@
+/* ChemAI hallmark 反 AI 味主题（全站共享）
+   去渐变流光标题 / 霓虹光晕 / 环境光斑 / 玻璃拟态，收敛单主色 + 衬线标题 */
+.page-head h1,.banner h1,.hero h1,.hero-title,.welcome-title,.section-main-title,.logo-name,.ob-logo{
+  background:none!important;-webkit-text-fill-color:var(--em,#10b981)!important;color:var(--em,#10b981)!important;
+  animation:none!important;filter:none!important;text-shadow:none!important;
+}
+body::after{display:none!important}
+.navbar{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.stat-num{background:none!important;-webkit-text-fill-color:var(--t1)!important;color:var(--t1)!important;filter:none!important}
+.g-tag,.badge b,.panel-title,.section-title,.sec-title,.stat-icon{text-shadow:none!important;filter:none!important}
+.page-head h1,.banner h1,.hero h1,.hero-title,.welcome-title,.section-main-title,.panel-title,.ob-h2,.section-title h2,.rp-sec h3,.ob-logo{font-family:Georgia,"Songti SC","Noto Serif SC","SimSun",serif!important}
+/* 移动端硬底线（hallmark gate 34/51）：根无横向滚动 + 长词换行 */
+html,body{overflow-x:clip}
+.page-head h1,.banner h1,.hero h1,.hero-title,.welcome-title,.section-main-title,.panel-title,.ob-h2{overflow-wrap:anywhere;min-width:0}
