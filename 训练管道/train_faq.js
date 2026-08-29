@@ -1,7 +1,7 @@
 /**
  * Train FAQ: enrich keys with question-variant patterns
  * ⚠ DEPRECATED (v43): 该脚本向 keys 机械注入问法变体/泛词（"如何操作""数值是多少"等），
- * 是关键词噪声源。运行版 assistant.html 已改用语料驱动学术词表 data/academic_lexicon.json。
+ * 是关键词噪声源。运行版 assistant.html 已改用语料驱动学术词表 _archive/data_dev/academic_lexicon.json。
  * 不要再次运行本脚本，否则会重新注入噪声。见 scripts/lib-assistant-faq.js。
  * Run: node train_faq.js
  */

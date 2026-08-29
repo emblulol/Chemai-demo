@@ -7,7 +7,7 @@ const https = require('https');
 const { readJSON } = require('../scripts/rag-utils');
 
 const QUESTIONS = readJSON(path.join(__dirname, '..', '试题迭代记录/round3/test_questions_round3.json'));
-const KB = readJSON(path.join(__dirname, '..', 'data', 'kb.json'));
+const KB = readJSON(path.join(__dirname, '..', '_archive', 'data_dev', 'kb.json'));
 const FAQ = readJSON(path.join(__dirname, '..', 'data', 'faq_unified.json'));
 const CORPUS = readJSON(path.join(__dirname, '..', 'data', 'corpus.json'));
 

@@ -1,11 +1,11 @@
 /**
  * 分类归一化工具 — 所有脚本共用的唯一分类处理模块
- * 数据来源: data/categories.json (唯一权威)
+ * 数据来源: _archive/data_dev/categories.json (唯一权威)
  */
 const path = require('path');
 const fs = require('fs');
 
-const CATEGORIES_PATH = path.join(__dirname, '..', 'data', 'categories.json');
+const CATEGORIES_PATH = path.join(__dirname, '..', '_archive', 'data_dev', 'categories.json');
 const CATEGORIES = JSON.parse(fs.readFileSync(CATEGORIES_PATH, 'utf8'));
 
 // 构建快速查找表: alias → canonical

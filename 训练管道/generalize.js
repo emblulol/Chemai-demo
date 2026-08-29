@@ -113,7 +113,7 @@ function rebuildArray(normalEntries, newEntries) {
   return normalEntries.concat(newEntries);
 }
 function mergeLexicon(newEntries) {
-  const lexFile = 'data/academic_lexicon.json';
+  const lexFile = '_archive/data_dev/academic_lexicon.json';
   const lex = rd(lexFile);
   let added = 0;
   for (const e of newEntries) {

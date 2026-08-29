@@ -42,7 +42,7 @@ if (!fs.existsSync(questionFile)) {
 
 const QUESTION_DATA = readJSON(questionFile);
 const QUESTIONS = Array.isArray(QUESTION_DATA) ? QUESTION_DATA : (QUESTION_DATA.questions || []);
-const KB = readJSON(path.join(__dirname, '..', 'data', 'kb.json'));
+const KB = readJSON(path.join(__dirname, '..', '_archive', 'data_dev', 'kb.json'));
 const FAQ = readJSON(path.join(__dirname, '..', 'data', 'faq_unified.json'));
 
 console.log('='.repeat(70));
@@ -346,7 +346,7 @@ async function scoreAnswer(question, aiAnswer) {
 }
 
 // ---- Chapter names for display (从统一分类总集读取) ----
-const CATEGORIES_JSON = readJSON(path.join(__dirname, '..', 'data', 'categories.json'));
+const CATEGORIES_JSON = readJSON(path.join(__dirname, '..', '_archive', 'data_dev', 'categories.json'));
 const CHAPTER_NAMES = CATEGORIES_JSON.chapters || {};
 
 // ===================== MAIN EXECUTION =====================

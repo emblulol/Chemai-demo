@@ -2,7 +2,7 @@
 /**
  * refine-kg.js — 知识图谱细化合并 + 校验工具（dev-only）
  *
- * 从 data/kg.json + data/kg_refine.json 合并新增节点/边、补齐稀疏节点，
+ * 从 data/kg.json + _archive/data_dev/kg_refine.json 合并新增节点/边、补齐稀疏节点，
  * 校验 id 唯一 / category 合法 / parent 与 relatedNodes / source / target 引用存在，
  * 以 JSON.stringify(kg,null,2)+"\n"(LF, 2 空格) 写回。
  *

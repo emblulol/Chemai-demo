@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { readJSON } = require('../scripts/rag-utils');
 
-const KB = readJSON(path.join(__dirname, '..', 'data', 'kb.json'));
+const KB = readJSON(path.join(__dirname, '..', '_archive', 'data_dev', 'kb.json'));
 const MANUAL = readJSON(path.join(__dirname, '..', 'data', 'manual.json'));
 const R1 = readJSON(path.join(__dirname, '..', '试题迭代记录/round1/test_questions_round1.json'));
 const R2 = readJSON(path.join(__dirname, '..', '试题迭代记录/round2/test_questions_round2.json'));

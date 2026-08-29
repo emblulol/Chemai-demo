@@ -396,7 +396,7 @@ function deriveKeys(question, allQs) {
   return arr.slice(0, 6);
 }
 function mergeLexicon(newKeys, newEnts, subfield) {
-  const lexFile = 'data/academic_lexicon.json';
+  const lexFile = '_archive/data_dev/academic_lexicon.json';
   const lex = readJson(lexFile);
   const b = lex.subfields[subfield];
   if (!b) return;

@@ -1,7 +1,7 @@
 /**
  * enrich-faq-keys.js
  * ⚠ DEPRECATED (v43): 该脚本向 keys 机械注入问法模板/同义词/泛词，是关键词噪声源。
- * 运行版 assistant.html 已改用语料驱动学术词表 data/academic_lexicon.json。
+ * 运行版 assistant.html 已改用语料驱动学术词表 _archive/data_dev/academic_lexicon.json。
  * 不要再次运行本脚本，否则会重新注入噪声。见 scripts/lib-assistant-faq.js。
  * Intelligently expands `keys` and `ents` fields in faq_unified.json
  * using content-aware rule-based generation.

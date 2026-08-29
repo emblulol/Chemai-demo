@@ -85,9 +85,9 @@ function readJSON(fp) {
 }
 
 const FAQ = readJSON(path.join(BASE, 'data', 'faq_unified.json'));
-const KB = readJSON(path.join(BASE, 'data', 'kb.json'));
+const KB = readJSON(path.join(BASE, '_archive', 'data_dev', 'kb.json'));
 const MANUAL = readJSON(path.join(BASE, 'data', 'manual.json'));
-const CATS = readJSON(path.join(BASE, 'data', 'categories.json'));
+const CATS = readJSON(path.join(BASE, '_archive', 'data_dev', 'categories.json'));
 const CORPUS = readJSON(path.join(BASE, 'data', 'corpus.json'));
 const INITIAL_FAQ = FAQ.length;
 

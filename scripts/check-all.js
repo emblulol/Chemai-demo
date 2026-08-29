@@ -18,7 +18,7 @@ console.log('========== ChemAI 全量检查 ==========\n');
 // 1. 乱码扫描
 console.log('【1. 全站乱码扫描】');
 const files = ['assistant.html','main.html','corpus.html','prep.html','knowledge.html','index.html',
-  'data/corpus.json','data/academic_lexicon.json','data/questions_bank.json','data/report_rubric.json','data/manual.json','data/kg.json'];
+  'data/corpus.json','_archive/data_dev/academic_lexicon.json','data/questions_bank.json','data/report_rubric.json','data/manual.json','data/kg.json'];
 let badTotal = 0;
 for (const f of files) {
   const s = fs.readFileSync(path.join(ROOT, f), 'utf8');

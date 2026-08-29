@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { readJSON, norm, bm25MatchKB, createKBIndex } = require('../scripts/rag-utils');
 
-const KB_DATA = readJSON(path.join(__dirname, '..', 'data', 'kb.json'));
+const KB_DATA = readJSON(path.join(__dirname, '..', '_archive', 'data_dev', 'kb.json'));
 const AUTO_FAQ = readJSON(path.join(__dirname, '..', 'data', 'faq_unified.json'));
 const round = process.argv[2] || '2';
 const QUESTIONS = readJSON(path.join(__dirname, '..', '试题迭代记录/round' + round, 'test_questions_round' + round + '.json'));

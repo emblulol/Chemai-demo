@@ -2,7 +2,7 @@
 /**
  * v43 LLM 审定清单生成器（不写回 HTML，只产出 manifest）
  *
- * 对 52 条 keys<3 条目补充学术词（优先取自 data/academic_lexicon.json），
+ * 对 52 条 keys<3 条目补充学术词（优先取自 _archive/data_dev/academic_lexicon.json），
  * 对 2 条 tierB 条目做条件删除。输出:
  *   Agent工作区/Agent-报告/v43_llm_manifest.json  → {index, new_keys}
  *

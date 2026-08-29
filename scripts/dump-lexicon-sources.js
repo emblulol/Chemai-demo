@@ -5,7 +5,7 @@
  * 从 corpus.json（objects/methods/title）、manual.json（section keywords）、
  * categories.json（17 规范 subfield）聚合"学术名词候选"，输出供 LLM 审定的中间产物。
  *
- * 输出: data/lexicon_sources_dump.json
+ * 输出: _archive/data_dev/lexicon_sources_dump.json
  */
 
 const fs = require('fs');
@@ -19,7 +19,7 @@ function readJson(fp) {
 }
 const corpus = readJson(path.join(DATA, 'corpus.json'));
 const manual = readJson(path.join(DATA, 'manual.json'));
-const cats = readJson(path.join(DATA, 'categories.json'));
+const cats = readJson(path.join(__dirname, '..', '_archive', 'data_dev', 'categories.json'));
 
 const CANONICAL = cats.canonical;          // 17 规范
 const ALIASES = cats.aliases || {};        // 别名 → 规范
@@ -137,7 +137,7 @@ const dump = {
   }
 };
 
-fs.writeFileSync(path.join(DATA, 'lexicon_sources_dump.json'), JSON.stringify(dump, null, 1), 'utf8');
+fs.writeFileSync(path.join(__dirname, '..', '_archive', 'data_dev', 'lexicon_sources_dump.json'), JSON.stringify(dump, null, 1), 'utf8');
 
 // 控制台摘要
 console.log('=== 词源聚合摘要 ===');
@@ -154,4 +154,4 @@ for (const sf of Object.keys(bySubfield)) {
   }
 }
 console.log('化学式 token 数: ' + dump.flat_formula_tokens.length);
-console.log('输出: data/lexicon_sources_dump.json');
+console.log('输出: _archive/data_dev/lexicon_sources_dump.json');
