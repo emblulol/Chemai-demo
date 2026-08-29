@@ -279,5 +279,20 @@ button{font-family:inherit;cursor:pointer}
   document.body.appendChild(js);
 })();
 </script>
+
+<script>
+// ===== 视频加载优化：SPA 渲染出 <video> 后强制 preload="metadata"（只取元数据/首帧当缩略图，不预下载整部大视频）=====
+(function(){
+  function scan(){
+    var vs=document.querySelectorAll('video');
+    for(var i=0;i<vs.length;i++){ var v=vs[i]; if(v.getAttribute('preload')!=='metadata') v.setAttribute('preload','metadata'); }
+  }
+  // 捕获 SPA 动态插入的 video 元素
+  if(window.MutationObserver){ try{ new MutationObserver(scan).observe(document.documentElement,{childList:true,subtree:true}); }catch(e){} }
+  // 兜底：SPA 可能重建 DOM，周期性复查
+  setInterval(scan, 2500);
+  document.addEventListener('DOMContentLoaded', scan);
+})();
+</script>
 </body>
 </html>
