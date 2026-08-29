@@ -113,10 +113,10 @@ a{text-decoration:none;color:inherit}
 /* 子卡片（习题检测） */
 .subgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:4px;flex:1}
 .subcard{
-  background:rgba(10,14,26,.45);border:1px solid var(--bd);border-radius:14px;padding:20px;
+  background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:20px;
   display:flex;flex-direction:column;transition:border-color .2s,background .2s,transform .2s;
 }
-.subcard:hover{border-color:rgba(148,163,184,.34);border-color:color-mix(in srgb,var(--saccent,var(--blue)) 40%,transparent);background:rgba(10,14,26,.65);transform:translateY(-3px)}
+.subcard:hover{border-color:rgba(148,163,184,.34);border-color:color-mix(in srgb,var(--saccent,var(--blue)) 40%,transparent);background:var(--hover);transform:translateY(-3px)}
 .subcard-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .subcard-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;
   background:rgba(148,163,184,.16);
