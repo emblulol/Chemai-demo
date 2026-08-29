@@ -5,7 +5,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="stylesheet" href="assets/mobile-content-guard.css">
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>课前预习 — 三草酸合铁酸钾制备实验 · ChemAI</title>
 <style>
 :root{
@@ -15,7 +15,7 @@
   --bd:rgba(148,163,184,.08);--bd2:rgba(148,163,184,.15);
   --r:16px;
 }
-[data-theme="light"]{color-scheme:light;--bg:#f5f7fa;--bg2:#eaeef4;--card:#ffffff;--hover:#e8ecf2;--card-hover:#e8ecf2;--t1:#1f2937;--t2:#475569;--t3:#64748b;--txt:#1f2937;--txt2:#475569;--txt3:#64748b;--bd:rgba(15,23,42,.08);--bd2:rgba(15,23,42,.16);--border:rgba(15,23,42,.08);--border2:rgba(15,23,42,.16);--shadow:0 8px 24px rgba(15,23,42,.08)}[data-theme="light"] .navbar{background:rgba(255,255,255,.82)}.theme-toggle{background:var(--bg2);border:1px solid var(--bd2);color:var(--t2);width:34px;height:34px;border-radius:10px;cursor:pointer;font-size:15px;display:inline-flex;align-items:center;justify-content:center;transition:.25s;flex-shrink:0;line-height:1}.theme-toggle:hover{border-color:var(--em);color:var(--em);transform:translateY(-1px)}body{animation:chemaiFade .45s ease}@keyframes chemaiFade{from{opacity:0}to{opacity:1}}
+[data-theme="light"]{color-scheme:light;--bg:#f5f7fa;--bg2:#eaeef4;--card:#ffffff;--hover:#e8ecf2;--card-hover:#e8ecf2;--t1:#1f2937;--t2:#475569;--t3:#64748b;--txt:#1f2937;--txt2:#475569;--txt3:#64748b;--bd:rgba(15,23,42,.08);--bd2:rgba(15,23,42,.16);--border:rgba(15,23,42,.08);--border2:rgba(15,23,42,.16);--shadow:0 8px 24px rgba(15,23,42,.08)}[data-theme="light"] .navbar{background:rgba(255,255,255,.82)}.theme-toggle{background:var(--bg2);border:1px solid var(--bd2);color:var(--t2);width:34px;height:34px;border-radius:10px;cursor:pointer;font-size:14px;display:inline-flex;align-items:center;justify-content:center;transition:.25s;flex-shrink:0;line-height:1}.theme-toggle:hover{border-color:var(--em);color:var(--em);transform:translateY(-1px)}body{animation:chemaiFade .45s ease}@keyframes chemaiFade{from{opacity:0}to{opacity:1}}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -23,18 +23,11 @@ body{
   font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
   min-height:100vh;-webkit-font-smoothing:antialiased;
 }
-body::before{
-  content:"";position:fixed;top:0;right:0;bottom:0;left:0;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(800px 400px at 15% -5%,rgba(16,185,129,.07),transparent 60%),
-    radial-gradient(700px 380px at 85% 0%,rgba(167,139,250,.06),transparent 60%),
-    radial-gradient(900px 500px at 50% 110%,rgba(45,212,191,.05),transparent 60%);
-}
 a{text-decoration:none;color:inherit}
 /* ===== 顶部导航 ===== */
 .navbar{
   position:sticky;top:0;z-index:100;
-  background:rgba(10,14,26,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:var(--bg);
   border-bottom:1px solid var(--bd2);
 }
 .nav-inner{
@@ -44,14 +37,12 @@ a{text-decoration:none;color:inherit}
 .logo{display:flex;align-items:center;gap:12px;flex-shrink:0;cursor:pointer}
 .logo-icon{
   width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
-  font-size:20px;background:linear-gradient(135deg,rgba(16,185,129,.25),rgba(45,212,191,.12));
+  font-size:20px;background:rgba(16,185,129,.16);
   border:1px solid rgba(16,185,129,.35);
-  animation:chemaiPulse 3.5s ease-in-out infinite;
 }
 .logo-text{line-height:1.2}
-.logo-name{font-weight:700;font-size:17px;background:linear-gradient(90deg,var(--emerald),var(--teal),#60a5fa,#a78bfa,var(--teal),var(--emerald));background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:chemaiFlow 5s linear infinite;filter:drop-shadow(0 0 5px rgba(45,212,191,.35))}
+.logo-name{font-weight:700;font-size:16px;color:var(--emerald)}
 .logo-sub{font-size:11px;color:var(--t3);letter-spacing:.2px}
-@keyframes chemaiFlow{0%{background-position:0% 0}100%{background-position:220% 0}}@keyframes chemaiPulse{0%,100%{box-shadow:0 0 6px rgba(16,185,129,.22)}50%{box-shadow:0 0 18px rgba(45,212,191,.5)}}
 .nav-links{display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none}
 .nav-links::-webkit-scrollbar{display:none}
 .nav-links a{
@@ -59,7 +50,7 @@ a{text-decoration:none;color:inherit}
   white-space:nowrap;transition:all .2s;border:1px solid transparent;
 }
 .nav-links a:hover{color:var(--t1);background:var(--card-hover)}
-.nav-toggle-mb{display:none;background:var(--card);border:1px solid var(--bd2);color:var(--t1);border-radius:9px;padding:8px 12px;font-size:20px;cursor:pointer;min-width:44px;min-height:44px;align-items:center;justify-content:center;flex-shrink:0}
+.nav-toggle-mb{display:none;background:var(--card);border:1px solid var(--bd2);color:var(--t1);border-radius:10px;padding:8px 12px;font-size:20px;cursor:pointer;min-width:44px;min-height:44px;align-items:center;justify-content:center;flex-shrink:0}
 .nav-links a.active{
   color:var(--emerald);background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.3);font-weight:600;
 }
@@ -76,15 +67,15 @@ a{text-decoration:none;color:inherit}
   font-size:110px;opacity:.10;pointer-events:none;
 }
 .banner-tag{
-  display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--teal);
+  display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--teal);
   background:rgba(45,212,191,.1);border:1px solid rgba(45,212,191,.3);
   padding:4px 12px;border-radius:999px;margin-bottom:14px;font-weight:600;
 }
-.banner h1{font-size:30px;font-weight:700;margin-bottom:10px;letter-spacing:.5px}
-.banner h1 .hl{background:linear-gradient(90deg,var(--emerald),var(--teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.banner p{color:var(--t2);font-size:15px;max-width:760px;line-height:1.7}
+.banner h1{font-size:28px;font-weight:700;margin-bottom:10px;letter-spacing:.5px}
+.banner h1 .hl{color:var(--emerald)}
+.banner p{color:var(--t2);font-size:14px;max-width:760px;line-height:1.7}
 .banner-stats{display:flex;gap:26px;margin-top:20px;flex-wrap:wrap}
-.bstat{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--t2)}
+.bstat{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--t2)}
 .bstat b{color:var(--t1);font-size:16px}
 .bstat .dot{width:8px;height:8px;border-radius:50%}
 /* 模块网格 */
@@ -99,20 +90,20 @@ a{text-decoration:none;color:inherit}
 .card-wide{grid-column:1/-1}
 .card-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:14px}
 .card-icon{
-  width:52px;height:52px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:26px;
+  width:52px;height:52px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;
   background:rgba(148,163,184,.16);
   border:1px solid rgba(148,163,184,.34);
   background:color-mix(in srgb,var(--accent,var(--emerald)) 14%,transparent);
   border:1px solid color-mix(in srgb,var(--accent,var(--emerald)) 35%,transparent);
 }
-.card-title{font-size:19px;font-weight:700;margin-bottom:5px}
-.card-desc{color:var(--t2);font-size:13.5px;line-height:1.65}
+.card-title{font-size:20px;font-weight:700;margin-bottom:5px}
+.card-desc{color:var(--t2);font-size:14px;line-height:1.65}
 .feat{list-style:none;margin:6px 0 20px;display:flex;flex-direction:column;gap:9px;flex:1}
-.feat li{display:flex;gap:9px;font-size:13.5px;color:var(--t2);align-items:flex-start;line-height:1.55}
+.feat li{display:flex;gap:9px;font-size:14px;color:var(--t2);align-items:flex-start;line-height:1.55}
 .feat li::before{content:"✓";color:var(--accent,var(--emerald));font-weight:700;flex-shrink:0;margin-top:1px}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  padding:12px 22px;border-radius:12px;font-size:14.5px;font-weight:600;color:#04101a;
+  padding:12px 22px;border-radius:14px;font-size:14px;font-weight:600;color:#04101a;
   background:linear-gradient(120deg,var(--accent,var(--emerald)),var(--accent2,var(--teal)));
   transition:filter .2s,transform .2s,box-shadow .2s;border:none;cursor:pointer;align-self:flex-start;
 }
@@ -127,32 +118,34 @@ a{text-decoration:none;color:inherit}
 }
 .subcard:hover{border-color:rgba(148,163,184,.34);border-color:color-mix(in srgb,var(--saccent,var(--blue)) 40%,transparent);background:rgba(10,14,26,.65);transform:translateY(-3px)}
 .subcard-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.subcard-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;
+.subcard-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;
   background:rgba(148,163,184,.16);
   border:1px solid rgba(148,163,184,.3);
   background:color-mix(in srgb,var(--saccent,var(--blue)) 14%,transparent);
   border:1px solid color-mix(in srgb,var(--saccent,var(--blue)) 32%,transparent)}
 .subcard-title{font-size:15.5px;font-weight:700}
 .subcard .feat{margin-bottom:16px}
-.subcard .btn{padding:9px 16px;font-size:13px;border-radius:10px}
+.subcard .btn{padding:9px 16px;font-size:12px;border-radius:10px}
 /* 建议流程 */
 .flow{
   margin-top:30px;background:var(--bg2);border:1px dashed var(--bd2);border-radius:var(--r);
   padding:18px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
 }
-.flow-label{font-size:13px;color:var(--t3);font-weight:600;display:flex;align-items:center;gap:6px;flex-shrink:0}
-.flow-steps{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--t2)}
+.flow-label{font-size:12px;color:var(--t3);font-weight:600;display:flex;align-items:center;gap:6px;flex-shrink:0}
+.flow-steps{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--t2)}
 .flow-steps .fs{padding:5px 12px;border-radius:999px;background:var(--card);border:1px solid var(--bd2)}
 .flow-steps .fa{color:var(--t3)}
-footer{margin-top:44px;text-align:center;color:var(--t3);font-size:12.5px;line-height:1.8}
+footer{margin-top:44px;text-align:center;color:var(--t3);font-size:12px;line-height:1.8}
 @media (max-width:900px){.grid{grid-template-columns:1fr}}
-@media (max-width:640px){
+@media (max-width:960px){
   .nav-toggle-mb{display:flex}
   .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--bd2);flex-direction:column;align-items:stretch;padding:4px 10px 10px;gap:2px;z-index:99}
   .nav-links.open{display:flex}
   .nav-links a{padding:11px 14px;font-size:14px;border-radius:10px}
+}
+@media (max-width:640px){
   .banner{padding:22px 16px}.banner h1{font-size:20px}
-  .banner p{font-size:13.5px}
+  .banner p{font-size:14px}
   .banner::after{font-size:60px;right:8px}
   .banner-stats{gap:12px}
   .bstat{font-size:12px}
@@ -160,23 +153,23 @@ footer{margin-top:44px;text-align:center;color:var(--t3);font-size:12.5px;line-h
   .subgrid{grid-template-columns:1fr}
   .card{padding:18px 14px}
   .card-title{font-size:16px}
-  .card-desc{font-size:12.5px}
-  .card-icon{width:42px;height:42px;font-size:22px}
+  .card-desc{font-size:12px}
+  .card-icon{width:42px;height:42px;font-size:20px}
   .subcard{padding:14px 12px}
   .subcard-title{font-size:14px}
-  .btn{padding:11px 18px;font-size:13.5px;min-height:44px}
-  .feat li{font-size:12.5px}
+  .btn{padding:11px 18px;font-size:14px;min-height:44px}
+  .feat li{font-size:12px}
   .nav-inner{padding:0 10px}.page{padding:18px 10px 48px}
   .logo-sub{display:none}
-  .logo-name{font-size:15px}
+  .logo-name{font-size:14px}
   .flow{padding:14px 16px}
   footer{padding:0 10px}
 }
 @media (max-width:360px){
-  .banner{padding:16px 12px}.banner h1{font-size:18px}
-  .banner p{font-size:12.5px}
+  .banner{padding:16px 12px}.banner h1{font-size:20px}
+  .banner p{font-size:12px}
   .card{padding:14px 10px}.card-title{font-size:14px}
-  .card-icon{width:36px;height:36px;font-size:18px}
+  .card-icon{width:36px;height:36px;font-size:20px}
   .subcard{padding:12px 10px}
   .btn{padding:9px 14px;font-size:12px}
   .page{padding:12px 8px 40px}
@@ -189,7 +182,7 @@ footer{margin-top:44px;text-align:center;color:var(--t3);font-size:12.5px;line-h
 <body>
 <nav class="navbar">
   <div class="nav-inner">
-    <a class="logo" href="index.html">
+    <a class="logo" href="main.html">
       <div class="logo-icon">⚗️</div>
       <div class="logo-text">
         <div class="logo-name">ChemAI</div>
@@ -386,56 +379,35 @@ footer{margin-top:44px;text-align:center;color:var(--t3);font-size:12.5px;line-h
 .g-tag{box-shadow:0 2px 8px rgba(2,6,23,.28)}
 
 /* 统计数字渐变 */
-.stat-num{font-size:24px;background:linear-gradient(90deg,var(--em),var(--teal),var(--blue));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat-num{font-size:24px;color:var(--t1)}
 .stat-icon{filter:drop-shadow(0 2px 5px rgba(16,185,129,.3))}
 
 /* 分区标题装饰条 */
 .section-title h2,.sec-title h2,.card-title h2,.panel-title,.rp-sec h3{position:relative;padding-left:14px}
-.section-title h2::before,.sec-title h2::before,.card-title h2::before,.rp-sec h3::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:5px;height:18px;border-radius:3px;background:linear-gradient(180deg,var(--em),var(--teal));box-shadow:0 0 8px rgba(45,212,191,.4)}
+.section-title h2::before,.sec-title h2::before,.card-title h2::before,.rp-sec h3::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:5px;height:18px;border-radius:6px;background:linear-gradient(180deg,var(--em),var(--teal));box-shadow:0 0 8px rgba(45,212,191,.4)}
 
 /* 知识图谱工具栏徽章 */
-.badge{border:1px solid var(--bd2, rgba(148,163,184,.25));background:rgba(16,185,129,.07);padding:4px 11px;border-radius:8px;font-size:12px}
+.badge{border:1px solid var(--bd2, rgba(148,163,184,.25));background:rgba(16,185,129,.07);padding:4px 11px;border-radius:10px;font-size:12px}
 .badge b{color:var(--em)}
 .tb-group .tb-label{letter-spacing:.05em}
 
 /* 图表卡片/容器 */
-#barChart,.chart-box{background:rgba(2,6,23,.25);border:1px solid var(--bd);border-radius:12px;padding:12px 14px}
+#barChart,.chart-box{background:rgba(2,6,23,.25);border:1px solid var(--bd);border-radius:14px;padding:12px 14px}
 
 /* === ChemAI 艺术字 v51 === */
-/* 主标题: 动态流光渐变 + 光晕 */
-.page-head h1,.banner h1,.hero-title,.welcome-title,.section-main-title{
-  background:linear-gradient(90deg,#34d399,#2dd4bf,#60a5fa,#a78bfa,#f472b6,#2dd4bf,#34d399);
-  background-size:300% 100%;
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  animation:chemaiShine 7s linear infinite;
-  filter:drop-shadow(0 2px 16px rgba(45,212,191,.3));
-}
-@keyframes chemaiShine{0%{background-position:0% 0}100%{background-position:300% 0}}
-/* 统计数字: 霓虹光晕 */
-.stat-num{filter:drop-shadow(0 0 12px rgba(45,212,191,.45))}
-/* 等级徽章 / 徽标数字: 发光 */
-.g-tag{text-shadow:0 0 10px currentColor}
-.badge b{filter:drop-shadow(0 0 6px rgba(45,212,191,.4))}
-/* 面板/分区标题: 柔和光晕 */
-.panel-title,.section-title,.sec-title{text-shadow:0 0 16px rgba(45,212,191,.22)}
-/* 主按钮文字: 轻微立体光 */
-.btn.primary{text-shadow:0 1px 5px rgba(4,18,27,.4)}
-/* 关键词高亮 */
-.hl{text-shadow:0 0 14px rgba(45,212,191,.35)}
+/* 标题: 单色收敛 */
+.page-head h1,.banner h1,.hero-title,.welcome-title,.section-main-title{color:var(--emerald)}
 
 /* === ChemAI 全局显示 v52 === */
 /* 环境光斑(固定层, 不挡交互) */
-body::after{content:"";position:fixed;inset:auto;width:560px;height:560px;left:-180px;top:-140px;z-index:0;pointer-events:none;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.16),transparent 68%);filter:blur(70px);animation:chemaiDrift 26s ease-in-out infinite}
-@keyframes chemaiDrift{0%,100%{transform:translate(0,0)}33%{transform:translate(90px,60px) scale(1.08)}66%{transform:translate(30px,-50px)}}
 /* 导航: 更透毛玻璃 + 激活/悬浮下划线动画 */
-.navbar{backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-bottom:1px solid rgba(45,212,191,.14)}
 .nav-links a{position:relative;isolation:isolate}
-.nav-links a::after{content:"";position:absolute;left:11px;right:11px;bottom:3px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--em,var(--emerald,#10b981)),var(--teal,#2dd4bf));transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.8,.3,1);box-shadow:0 0 10px rgba(45,212,191,.55)}
+.nav-links a::after{content:"";position:absolute;left:11px;right:11px;bottom:3px;height:2px;border-radius:6px;background:linear-gradient(90deg,var(--em,var(--emerald,#10b981)),var(--teal,#2dd4bf));transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.8,.3,1);box-shadow:0 0 10px rgba(45,212,191,.55)}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
 
 /* 滚动条: 渐变滑块 */
 ::-webkit-scrollbar{width:11px;height:11px}
-::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(45,212,191,.5),rgba(96,165,250,.5));border-radius:7px;border:2px solid transparent;background-clip:content-box}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(45,212,191,.5),rgba(96,165,250,.5));border-radius:10px;border:2px solid transparent;background-clip:content-box}
 ::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,rgba(45,212,191,.8),rgba(96,165,250,.8));background-clip:content-box;border:2px solid transparent}
 
 /* 键盘可达性: 焦点环 */
@@ -456,14 +428,6 @@ footer{border-top:1px solid rgba(45,212,191,.15);background:linear-gradient(180d
 :root{--em:#10b981}
 /* B) 修复: 语料库概览 5 张统计卡在 2 列布局下第 5 张落单 → 奇数末卡占满整行 */
 @media (max-width:960px){.stats .stat:last-child:nth-child(odd){grid-column:1/-1}}
-/* C) 标题: 7色彩虹 → 品牌三色流光(翠绿-青-蓝), 更沉稳克制 */
-.page-head h1,.banner h1,.hero-title,.welcome-title,.section-main-title{
-  background:linear-gradient(90deg,#34d399,#2dd4bf,#60a5fa,#2dd4bf,#34d399);
-  background-size:300% 100%;
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  animation:chemaiShine 8s linear infinite;
-  filter:drop-shadow(0 2px 14px rgba(45,212,191,.22));
-}
 /* D) 卡片悬浮: 去掉 scale 抖动, 优雅抬升 + 光晕收敛 */
 .card:hover,.side-card:hover,.calc-card:hover,.wrong-item:hover,.doc-card:hover,.qcard:hover,.learn-card:hover,.stat-card:hover{
   transform:translateY(-4px);
@@ -485,7 +449,7 @@ footer{border-top:1px solid rgba(45,212,191,.15);background:linear-gradient(180d
   border-color:rgba(15,23,42,.09);
 }
 [data-theme="light"] .navbar{background:rgba(255,255,255,.86)}
-[data-theme="light"] ::-webkit-scrollbar-thumb{background:rgba(15,23,42,.2);border:2px solid transparent;background-clip:content-box;border-radius:7px}
+[data-theme="light"] ::-webkit-scrollbar-thumb{background:rgba(15,23,42,.2);border:2px solid transparent;background-clip:content-box;border-radius:10px}
 [data-theme="light"] .bar-track{background:rgba(15,23,42,.08)}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
@@ -520,6 +484,6 @@ document.addEventListener('DOMContentLoaded',function(){
 @media (prefers-reduced-motion:reduce){ .subcard:hover{ transform:none; } }
 </style>
 <script>/* 角色门控：科普探索仅非化学专业、报告评估仅教师 */
-(function(){var u,r=null;try{u=JSON.parse(localStorage.getItem('chem-user')||'{}');r=(u&&u.state&&u.state.role)||null;}catch(e){}var el=document.querySelectorAll('[data-role-gate]');for(var i=0;i<el.length;i++){var n=el[i].getAttribute('data-role-gate');el[i].style.display=(r===n)?'':'none';}})();</script>
+(function(){var u,r=null;try{u=JSON.parse(localStorage.getItem('chem-user')||'{}');r=(u&&u.state&&u.state.role)||null;}catch(e){}var el=document.querySelectorAll('[data-role-gate]');for(var i=0;i<el.length;i++){var n=el[i].getAttribute('data-role-gate');el[i].style.display=(r===n||(r==='admin'&&n==='teacher'))?'':'none';}})();</script>
 </body>
 </html>

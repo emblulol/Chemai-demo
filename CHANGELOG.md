@@ -1,6 +1,34 @@
 # ChemAI 更新日志
 
-> 独立变更记录（README 版本历史之外的增量变更）。版本号承接 v71。
+> 独立变更记录（README 版本历史之外的增量变更）。版本号承接 v71，当前 v74。
+
+## v74（2026-08-29）— 反 AI 味根因化 + 身份单一来源 + 性能/移动端/双端优化
+
+### 🎨 UI 反 AI 味根因化（全 7 页 + `assets/hallmark.css`）
+- 根除流光渐变标题 / 环境光斑 / 玻璃拟态 / 霓虹光晕：弃用 `hallmark.css` 的 `!important` 覆盖层，改各页源文件。删除 `--grad-crystal`/`--grad` token、`body::before`/`body::after` 光斑、`chemaiFlow/Pulse/Shine/Drift`/`gradFlow` keyframes。
+- 标题/logo/统计数字/按钮统一单色：强调字用翡翠绿 `--em`/`--emerald`，统计数字用正文墨色 `--t1`；logo 去脉冲动画。
+- `hallmark.css` 删除 5 条失效覆盖，仅保留衬线标题/移动端硬底线/浅色对比度。
+
+### 👤 身份单一来源 + 管理员唯一入口（`index.html`/`main.html`/`assistant.html`）
+- 身份识别只做一次、之后始终继承：`index.html` `<head>` 加已识别重定向（`location.replace("main.html")`）；「切换身份」清空 `chem-user` 后回落地页。
+- 管理员作为落地页最底部整行卡片（`grid-column:1/-1`、琥珀 `#f59e0b`）、唯一入口（助手首次引导移除 admin 按钮）。
+- 角色单一来源收敛到 `chem-user`：`assistant.html` `chatRole()` 改读它，删除 `chemai_user_v1.role` 字段与 `legacyRole()`；admin 纳入 `index`/`main` ROLES 映射 + 各页 `data-role-gate` 门控放行。
+
+### ⚡ 加载效能
+- Google Fonts 非阻塞（`preload`+`onload`+`<noscript>`）；KaTeX 加 `preconnect`；实验图/图片卡 `loading="lazy" decoding="async"`。
+- 清理 174 个 `(2)` 陈旧副本（assets 13MB + 根目录 759KB）。
+
+### 📱 移动端（`assets/mobile-content-guard.css` + 全站）
+- `viewport-fit=cover` + `env(safe-area-inset-bottom)` 安全区；`text-size-adjust`/`tap-highlight`；导航/按钮触控目标 ≥44px；11px 小字→12px、图谱边标签 9→11px、远层节点 10.5→11.5px。
+
+### 🖥️ 双端
+- `hallmark.css` 补 `:focus-visible` 聚焦环（修 index/generator 键盘焦点缺失）；导航折叠断点统一 960px（main/prep/corpus/knowledge，原 640px）。
+
+### 🐛 修复
+- `assistant-model.js` 的 `var(--grad)` 悬空引用（掌握度进度条无色）→ `var(--em)`。
+
+### ✅ 验证
+- `npm test` 67/67 通过；`check-all.js` 全绿；外部 JS `node --check` 通过；CSS 变量/悬空引用/身份一致性全查通过。
 
 ## v72.1（2026-08-25）— agent 调用管道修复
 

@@ -86,3 +86,49 @@ sub, sup {
 }
 sub { bottom: -0.26em !important; }
 sup { top: -0.53em !important; }
+
+/* ============================================================================
+   移动端显示优化（全站）
+   ① 锁定文字缩放：iOS 在横竖屏切换或聚焦输入框时不会自动放大文本，避免布局跳动
+   ② 点按反馈：去掉系统灰色高亮闪烁（各交互元素已有自己的 hover/active 反馈）
+   ③ 安全区：iPhone 刘海屏 / 底部 Home 条不被系统手势遮挡（配合 viewport-fit=cover）
+   ============================================================================ */
+html {
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+}
+body {
+  -webkit-tap-highlight-color: transparent !important;
+  padding-bottom: env(safe-area-inset-bottom) !important;
+}
+
+/* ============================================================================
+   移动端交互与可读性（全站）
+   ① 触控目标 ≥44px：导航链接（含汉堡展开菜单 + 横向滚动内联导航）
+   ② 触控目标：发送按钮 / 图例折叠钮 / 缩放钮 / 图例行
+   ③ 可读性：中文 11px 过小，统一提升到 12px
+   ============================================================================ */
+@media (max-width: 820px) {
+  .nav-links a, .nav-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .composer #qaSend, .composer #asSend {
+    min-height: 44px;
+  }
+  .leg-toggle, .zoom-ctrl button {
+    min-width: 40px;
+    min-height: 40px;
+  }
+  .legend-panel .leg-row {
+    min-height: 32px;
+  }
+  .legend-note, .legend-panel .leg-note, .leg-sec-title,
+  .logo-sub, .stage-hint, .tb-label {
+    font-size: 12px !important;
+  }
+  .legend-panel .leg-row, .bib-item .bib-m {
+    font-size: 13px !important;
+  }
+}

@@ -1,7 +1,7 @@
 # ChemAI — 三草酸合铁(III)酸钾制备实验 智能教学平台
 
 [![Deploy](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://k3fec2o43.clawdbot.ggff.net/)
-[![Version](https://img.shields.io/badge/version-v71-blue)](https://github.com/LittleAlety/chemai-8.23-)
+[![Version](https://img.shields.io/badge/version-v74-blue)](https://github.com/LittleAlety/chemai-8.23-)
 [![FAQ](https://img.shields.io/badge/FAQ-3102条-green)](https://github.com/LittleAlety/chemai-8.23-)
 [![Corpus](https://img.shields.io/badge/语料库-445篇-orange)](https://github.com/LittleAlety/chemai-8.23-)
 [![KG](https://img.shields.io/badge/知识图谱-123节点-blueviolet)](https://github.com/LittleAlety/chemai-8.23-)
@@ -17,7 +17,7 @@
 
 | 页面 | 文件 | 说明 |
 |------|------|------|
-| **首页入口** | `index.html` | React SPA 首页，身份选择（非化学专业 / 化学专业 / 教师），含 LLM 配置面板；**视频资源库页**（`#/videos`）含 4 部本地视频 + 精选 bilibili 教学视频；**科普探索页**（`#/explore`）面向非化学专业，含「实验现象画廊」6 卡与「生活中的化学」4 卡，卡片配图科普 |
+| **首页入口** | `index.html` | React SPA 首页，身份选择（非化学专业 / 化学专业 / 教师 / 管理员，识别一次后始终继承），含 LLM 配置面板；**视频资源库页**（`#/videos`）含 4 部本地视频 + 精选 bilibili 教学视频；**科普探索页**（`#/explore`）面向非化学专业，含「实验现象画廊」6 卡与「生活中的化学」4 卡，卡片配图科普 |
 | **AI 助手** | `assistant.html` | **正常/集群双模式**；多策略检索 + 类比推理 + DeepSeek RAG 问答；**3102 条 FAQ**（运行时 `data/faq_runtime.js`）；**5-agent 集群工作台**（集群模式：检索官/推理官/网页研究员/编辑官/质检官 + 集群日志 + 重答/加强网页检索/LLM重答/集群状态）；**网页研究员**（站内题库/KG→PubChem→维基→Bing·实验性 多源降级，熔断容错，权威冲突校验）；对话**按身份切换语言风格**（v65）；10 KP 掌握度自适应测评；三维度雷达图 + 学习建议；12 条 selfCheck；侧栏**视频资源板块内嵌 4 部本地视频播放器**（默认折叠，点击展开） |
 | **实验手册** | `main.html` | 11 章全文浏览器，LaTeX 公式 Unicode 渲染 |
 | **知识图谱** | `knowledge.html` | 123 节点 / 195 关联的交互式配位化学知识网络，**高区分 5 色分区配色**（祖母绿/暖橙/玫红/靛蓝/深紫） |
@@ -116,14 +116,15 @@ chemai-8.23-/
 │   ├── images/              # 实验实拍图 + 科普探索页插图（assets/images/explore/）
 │   └── ...                   # CSS / JS
 ├── data/
-│   ├── faq_runtime.js        # 运行时 FAQ（v37.6+ 唯一真相源，3102 条，window.FAQ=）
+│   ├── faq_runtime.js        # 运行时 FAQ（唯一真相源，3102 条，window.FAQ=；assistant + corpus 共用）
 │   ├── manual.json           # 实验手册（11 章 / 42 节）
 │   ├── corpus.json           # 语料库清单（445 篇）
 │   ├── images.json           # 实验图片索引（76 张）
 │   ├── kg.json / questions_bank.json / report_rubric.json
-│   └── academic_lexicon.json # 学术词表（dev-only，不部署）
-│   # 其余 dev-only（不部署）：kb.json（遗留知识块）、questions_master.json（题库池）、
-│   #   categories.json、assessment_kp.json、lexicon_sources_dump.json、all_cycle_questions.json、faq_key_blacklist.json
+│   ├── questions_master.json # 题库池（generator.html 智能命题用）
+│   └── faq_unified.json      # FAQ 同步文件（corpus.html GitHub 同步用）
+│   # dev-only（已移入 _archive/data_dev/，不部署）：kb.json、academic_lexicon.json、categories.json、
+│   #   assessment_kp.json、lexicon_sources_dump.json、all_cycle_questions.json、faq_key_blacklist.json、kg_refine.json
 ├── scripts/                   # 工具脚本（lib-assistant-faq.js、v44/v66/v67/v68-inject-*.js、v45-round.js 等）
 ├── Agent工作区/ 训练管道/ 诊断与调试/ 试题迭代记录/
 ├── 三草酸合铁酸钾资料/        # 原始语料 + 视频资料（含 _原版备份）
@@ -176,12 +177,13 @@ npx serve .                     # Node.js
 
 ## 版本历史
 
-> 版本线 v30 → v73（2026-07 至 2026-08-28）。v45 起版本号由「语料自学习轮次 + UI 注入脚本」共同承载。
+> 版本线 v30 → v74（2026-07 至 2026-08-29）。v45 起版本号由「语料自学习轮次 + UI 注入脚本」共同承载。
 
-### 近期（v56 → v73）
+### 近期（v56 → v74）
 
 | 版本 | 日期 | 主要变更 |
 |------|------|----------|
+| **v74** | 08-29 | **UI 反 AI 味根因化 + 身份单一来源 + 性能/移动端优化**：① 根除流光渐变标题/环境光斑/玻璃拟态/霓虹光晕（弃 `hallmark.css` 的 `!important` 覆盖层、改各页源文件），收敛单主色翡翠绿 + 衬线标题；② 身份识别只做一次、之后始终继承（`index.html` 已识别自动跳 `main.html`），管理员为落地页最底部整行卡片、唯一入口（助手首次引导移除 admin 按钮），角色单一来源收敛到 `chem-user`（`chatRole()` 改读它、清 `chemai_user_v1.role` 冗余）；③ 加载效能：Google Fonts 非阻塞、实验图/图片卡懒加载、KaTeX/React 大包按需、清 174 个 `(2)` 陈旧副本 13.7MB；④ 移动端：`viewport-fit=cover`+`env(safe-area-inset-bottom)` 安全区、`text-size-adjust`/点按反馈、导航/按钮触控目标 ≥44px、图谱边标签 9→11px / 远层节点 10.5→11.5px |
 | **v73** | 08-28 | **UI 重构 + 身份/记录**：首次进入「身份选择→学号识别」闸门 + 用户档案（uid/name/role）与按用户隔离的学习记录；教学流程步骤条（按身份展示学习/教学闭环）；控制收敛（去 6 工作模式 pills，只留正常/集群）；站内跳转（内部链接同窗）；知识图谱深链（`?node=` 深链 + `SUBFIELD_ALIAS`）；agent 管道修复（LLM 答案补质检/讲义核对、竞态修复、技能卡时序） |
 | **v71** | 08-23 | **学术追踪 + 知识星链（闻道④⑤）**：corpus 页新增「📡 学术追踪·领域动态」区——课题前沿·近期文献(按 `e.year` 降序取 8，卡上年份徽章+子领域/文献类型) + 📅 年份趋势 chips(点某年下钻到知识清单、再点取消) + 🔗 知识星链(基于收藏，按子领域+关键词对语料计分取 top3 生成关联节点)；收藏按钮点击即时刷新星链。`state.year` 过滤 + `renderAcademicTrack`/`buildStarChain`/`_tok`；修 `assistant-model.js`(defer 加载)致老用户收藏态/星链首屏空态——`DOMContentLoaded` 补齐 `refreshList()`+`renderAcademicTrack()` |
 | **v70** | 08-23 | **闻道三功能（①②③）**：② 知识库多源枢纽——corpus `#doctypeSel` 来源类型分面 + A 区来源类型分布条形图(点击下钻)；③ 收藏+笔记——`chemai_favorites_v1`(数组)/`chemai_notes_v1`(map) 纯函数挂 `window.AssistantModel`，覆盖 corpus 行(📌/✏️)+knowledge 面板+精通之路汇总区并入学习画像导出；① 多文献横向对比——`AUTHORITY_RULES` 每条加只读 `param`/`lecture` 字段(已核验向后兼容) + 纯函数 `extractParamCompare`/`buildCompareTableHTML`，研究答案尾部自动追加「📊 多文献横向对比·讲义最高权威」卡(⚠=与讲义不符) |

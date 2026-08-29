@@ -215,7 +215,7 @@
     if(m&&m.items&&m.items.length){
       head='<div class="ans-sec"><div class="rich-answer"><div class="mastery-head"><div class="mh-grade '+((m.total>=80)?'high':(m.total>=60)?'mid':'low')+'">'+Math.round(m.total||0)+'<span>/100</span></div>'
         +'<div><b>最近掌握度测评</b><div style="font-size:12px;color:var(--t3)">'+escText(m.date||'')+' · '+(m.items.filter(function(x){return x.m!==null;}).length)+'/10 知识点已测</div></div></div>'
-        +'<div class="kp-bar" style="margin-top:10px"><i style="width:'+Math.min(100,Math.round(m.total||0))+'%;background:var(--grad)"></i></div>'
+        +'<div class="kp-bar" style="margin-top:10px"><i style="width:'+Math.min(100,Math.round(m.total||0))+'%;background:var(--em)"></i></div>'
         +'</div></div>';
     }else{
       head='<div class="ans-sec"><div class="rich-answer"><p>还没有掌握度测评记录。先做一次 <b>📝 掌握度测评</b>，我就能为你生成个性化复习路线。</p></div></div>';

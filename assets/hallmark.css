@@ -1,14 +1,22 @@
-/* ChemAI hallmark 反 AI 味主题（全站共享）
-   去渐变流光标题 / 霓虹光晕 / 环境光斑 / 玻璃拟态，收敛单主色 + 衬线标题 */
-.page-head h1,.banner h1,.hero h1,.hero-title,.welcome-title,.section-main-title,.logo-name,.ob-logo{
-  background:none!important;-webkit-text-fill-color:var(--em,#10b981)!important;color:var(--em,#10b981)!important;
-  animation:none!important;filter:none!important;text-shadow:none!important;
-}
-body::after{display:none!important}
-.navbar{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-.stat-num{background:none!important;-webkit-text-fill-color:var(--t1)!important;color:var(--t1)!important;filter:none!important}
-.g-tag,.badge b,.panel-title,.section-title,.sec-title,.stat-icon{text-shadow:none!important;filter:none!important}
+/* ChemAI 反 AI 味主题（全站共享）
+   标题统一衬线显示字体 + 浅色模式对比度修正 + 移动端硬底线。
+   （流光渐变标题 / 霓虹光晕 / 环境光斑 / 玻璃拟态已在各页源文件中根除，
+     本文件不再承担覆盖责任，仅保留跨页设计系统。） */
+/* 标题显示字体：衬线 */
 .page-head h1,.banner h1,.hero h1,.hero-title,.welcome-title,.section-main-title,.panel-title,.ob-h2,.section-title h2,.rp-sec h3,.ob-logo{font-family:Georgia,"Songti SC","Noto Serif SC","SimSun",serif!important}
+/* 键盘可达性：焦点可见环（桌面键盘导航，index/generator 补齐） */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid rgba(45,212,191,.7)!important;outline-offset:2px;border-radius:6px}
 /* 移动端硬底线（hallmark gate 34/51）：根无横向滚动 + 长词换行 */
 html,body{overflow-x:clip}
 .page-head h1,.banner h1,.hero h1,.hero-title,.welcome-title,.section-main-title,.panel-title,.ob-h2{overflow-wrap:anywhere;min-width:0}
+/* 浅色模式：标题改深色（浅色背景下翡翠绿对比度不足，改用深青 #0f766e） */
+[data-theme="light"] .page-head h1,[data-theme="light"] .banner h1,[data-theme="light"] .banner h1 .hl,[data-theme="light"] .hero h1,[data-theme="light"] .hero-title,[data-theme="light"] .welcome-title,[data-theme="light"] .section-main-title,[data-theme="light"] .logo-name,[data-theme="light"] .ob-logo,[data-theme="light"] .report h2,[data-theme="light"] .mh-grade{color:#0f766e!important}
+/* 浅色模式：灰色文字加深（#64748b/#475569 在白底上对比度不足） */
+[data-theme="light"]{--t2:#334155;--t3:#475569;--txt2:#334155;--txt3:#475569}
+/* 浅色模式：图表容器/页脚去硬编码深色，统一浅色背景 */
+[data-theme="light"] #barChart,[data-theme="light"] .chart-box{background:var(--bg2)!important}
+[data-theme="light"] footer{background:none!important}
+/* 浅色模式：知识图谱滤镜芯片/详情面板页脚、表格行 hover 去硬编码深色 */
+[data-theme="light"] .fchip:not(.on){background:var(--bg2)!important}
+[data-theme="light"] .panel-foot{background:var(--bg2)!important}
+[data-theme="light"] tbody tr:hover{background:rgba(15,23,42,.06)!important}
