@@ -6,6 +6,9 @@
 .page-head h1,.banner h1,.hero h1,.hero-title,.welcome-title,.section-main-title,.panel-title,.ob-h2,.section-title h2,.rp-sec h3,.ob-logo{font-family:Georgia,"Songti SC","Noto Serif SC","SimSun",serif!important}
 /* 键盘可达性：焦点可见环（桌面键盘导航，index/generator 补齐） */
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid rgba(45,212,191,.7)!important;outline-offset:2px;border-radius:6px}
+/* 回到主页按钮（内容页导航左上角） */
+.home-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 13px;border:1px solid var(--bd2,rgba(148,163,184,.15));border-radius:10px;font-size:13px;font-weight:600;color:var(--t2,#94a3b8);white-space:nowrap;flex-shrink:0;cursor:pointer;text-decoration:none;transition:color .2s,border-color .2s,background-color .2s}
+.home-btn:hover{color:var(--em,#10b981);border-color:var(--em,#10b981);background:rgba(16,185,129,.08)}
 /* 移动端硬底线（hallmark gate 34/51）：根无横向滚动 + 长词换行 */
 html,body{overflow-x:clip}
 .page-head h1,.banner h1,.hero h1,.hero-title,.welcome-title,.section-main-title,.panel-title,.ob-h2{overflow-wrap:anywhere;min-width:0}
