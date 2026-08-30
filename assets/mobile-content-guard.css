@@ -101,6 +101,9 @@ body {
   -webkit-tap-highlight-color: transparent !important;
   padding-bottom: env(safe-area-inset-bottom) !important;
 }
+.navbar {
+  padding-top: env(safe-area-inset-top) !important;
+}
 
 /* ============================================================================
    移动端交互与可读性（全站）
