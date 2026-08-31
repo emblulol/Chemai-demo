@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="assets/mobile-content-guard.css">
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="color-scheme" content="dark light">
 <title>知识图谱 · ChemAI 三草酸合铁酸钾制备实验</title>
 <!-- KaTeX 改为按需加载（见下方 loadKatex()），仅在首次打开含公式节点时注入，避免阻塞首屏渲染 -->
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -25,6 +26,7 @@ body{
   background:var(--bg); color:var(--txt); overflow:hidden;
   font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
   -webkit-font-smoothing:antialiased;
+  -webkit-text-size-adjust:100%;text-size-adjust:100%;
 }
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer}
@@ -701,7 +703,7 @@ function initGraph(kg){
 
   buildTree();      // 基于 parent 字段构建知识树
   resizeCanvas();  // 先测量画布，以便 LAYER_R 按尺寸响应式缩放
-  const scale = Math.min(W, H) / 1400;
+  const scale = Math.max(0.45, Math.min(W, H) / 1400);  // 手机端设下限，避免图谱被过度缩小
   LAYER_R = {1: 215*scale, 2: 470*scale, 3: 725*scale, 4: 920*scale};
   assignLayout();   // 分层环形 + 类目扇区布局（计算目标位置）
   // 初始位置 = 目标位置 + 微抖动（中心节点严格居中）→ 默认即呈现清晰层次
@@ -1015,7 +1017,10 @@ function graphBounds(){
 }
 function fitTarget(){
   const b = graphBounds();
-  const k = Math.min(W/(b.w+260), H/(b.h+240));
+  // 小屏减小四周留白，让图谱尽可能铺满屏幕（配合手机端字号缩放）
+  const padW = W < 640 ? 130 : 260;
+  const padH = H < 640 ? 120 : 240;
+  const k = Math.min(W/(b.w+padW), H/(b.h+padH));
   return {x:b.x, y:b.y, k:Math.min(Math.max(k, 0.15), 1.35)};
 }
 function resetView(anim){
@@ -1262,8 +1267,9 @@ function draw(){
     }
     if(isSel || isHov || isMatch || (focusSet && focusSet.has(n.id) && view.k > 0.32)){ show = true; labelAlpha = 1; }
     if(show){
-      // 世界字号 = 屏幕字号/k，并限制极端缩放下的过大/过小
-      const wf = Math.min(Math.max(fs/view.k, fs/1.25), fs/0.32);
+      // 世界字号 = 屏幕字号/k，并限制极端缩放下的过大/过小；手机端等比缩小标签
+      const fsScale = Math.min(1, Math.max(0.75, W/700));
+      const wf = Math.min(Math.max(fs*fsScale/view.k, fs*fsScale/1.25), fs*fsScale/0.32);
       ctx.globalAlpha = Math.max(alpha * labelAlpha, 0.02);
       ctx.font = (n.level<=1 ? '700 ' : '600 ') + wf + 'px "PingFang SC","Microsoft YaHei",sans-serif';
       ctx.lineWidth = wf*0.28; ctx.strokeStyle = kgVar('--kg-stroke') || 'rgba(10,14,26,.92)';

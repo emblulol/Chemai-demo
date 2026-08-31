@@ -3,10 +3,42 @@
 <head>
 <script>(function(){try{var t=localStorage.getItem('chemaiTheme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
 <script>(function(){try{var raw=localStorage.getItem("chem-user");if(!raw)return;var o=JSON.parse(raw);var r=o&&o.state?o.state.role:null;if(!r)return;if(location.hash)return;location.replace("main.html");}catch(e){}})();</script>
+<script>
+/* 主题桥接：统一 chemaiTheme（静态页）与 chem-theme（React SPA）两个 localStorage 键，
+   避免在助手/语料库等页切日间模式后，进入 index.html#/videos 等 SPA 路由无法继承。 */
+(function(){
+  function writeChemai(v){ if(v==='light'||v==='dark'){ try{ localStorage.setItem('chemaiTheme', v); }catch(e){} } }
+  /* 1) 加载即同步：把权威键 chemaiTheme 灌进 React SPA 的 chem-theme（Zustand persist），
+        保证 SPA 水合(rehydrate)到与静态页一致的主题；只改 theme 字段、保留其它 state。 */
+  (function(){
+    try{
+      var t=localStorage.getItem('chemaiTheme');
+      if(t!=='light'&&t!=='dark') return;
+      var raw=localStorage.getItem('chem-theme'), obj=null;
+      if(raw){ try{ obj=JSON.parse(raw); }catch(e){ obj=null; } }
+      if(!obj||typeof obj!=='object') obj={};
+      if(!obj.state||typeof obj.state!=='object') obj.state={};
+      if(obj.state.theme===t) return;
+      obj.state.theme=t;
+      localStorage.setItem('chem-theme', JSON.stringify(obj));
+    }catch(e){}
+  })();
+  /* 2) 运行时回写：监听 <html data-theme> 变化，覆盖 React SPA 的主题切换，
+        让 SPA 里的日/夜切换也写回 chemaiTheme，静态页即可继承。 */
+  if(window.MutationObserver){
+    try{
+      new MutationObserver(function(){
+        writeChemai(document.documentElement.getAttribute('data-theme'));
+      }).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+    }catch(e){}
+  }
+})();
+</script>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="stylesheet" href="assets/mobile-content-guard.css">
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="color-scheme" content="dark light">
 <title>ChemAI 化学实验教学智能体</title>
 <link rel="preconnect" href="https://fonts.loli.net"/>
 <link rel="preconnect" href="https://gstatic.loli.net" crossorigin=""/>
