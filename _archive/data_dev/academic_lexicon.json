@@ -33152,68 +33152,68 @@
         "entity": 997
       },
       "反应原理": {
-        "canonical": 502,
-        "entity": 23
+        "canonical": 298,
+        "entity": 2
       },
       "实验操作": {
-        "canonical": 339,
-        "entity": 120
+        "canonical": 164,
+        "entity": 31
       },
       "分析测定": {
-        "canonical": 3614,
-        "entity": 380
+        "canonical": 2330,
+        "entity": 140
       },
       "光化学应用": {
-        "canonical": 2146,
-        "entity": 290
+        "canonical": 1555,
+        "entity": 144
       },
       "结构表征": {
-        "canonical": 18,
-        "entity": 5
+        "canonical": 15,
+        "entity": 2
       },
       "磁性研究": {
-        "canonical": 15,
-        "entity": 5
+        "canonical": 12,
+        "entity": 2
       },
       "热分析": {
-        "canonical": 56,
-        "entity": 30
+        "canonical": 17,
+        "entity": 2
       },
       "安全与废物处理": {
-        "canonical": 22,
-        "entity": 7
+        "canonical": 19,
+        "entity": 0
       },
       "配位化学理论": {
-        "canonical": 977,
-        "entity": 152
+        "canonical": 584,
+        "entity": 71
       },
       "实验教学": {
-        "canonical": 87,
-        "entity": 18
-      },
-      "综合研究": {
-        "canonical": 311,
-        "entity": 73
-      },
-      "化学史": {
-        "canonical": 17,
-        "entity": 5
-      },
-      "高等理论": {
-        "canonical": 19,
+        "canonical": 65,
         "entity": 6
       },
+      "综合研究": {
+        "canonical": 152,
+        "entity": 13
+      },
+      "化学史": {
+        "canonical": 15,
+        "entity": 4
+      },
+      "高等理论": {
+        "canonical": 14,
+        "entity": 1
+      },
       "蓝晒工艺": {
-        "canonical": 164,
-        "entity": 22
+        "canonical": 93,
+        "entity": 4
       },
       "摩尔盐相关": {
-        "canonical": 146,
-        "entity": 29
+        "canonical": 72,
+        "entity": 8
       },
       "草酸配合物": {
-        "canonical": 115,
-        "entity": 32
+        "canonical": 57,
+        "entity": 13
       }
     },
     "subfield_count": 17
