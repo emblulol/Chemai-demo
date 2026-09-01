@@ -1,6 +1,27 @@
 # ChemAI 更新日志
 
-> 独立变更记录（README 版本历史之外的增量变更）。版本号承接 v71，当前 v74。
+> 独立变更记录（README 版本历史之外的增量变更）。版本号承接 v71，当前 v75。
+
+## v75（2026-09-01）— 数据自洽 + 主题跨页继承 + 图谱手机端优化
+
+### 📊 数据一致性（`data/kg.json` / `data/corpus.json` / `academic_lexicon.json`）
+- 知识图谱 9 个 `level:4` 节点归为 `level:3`「细分点」，层级分解加总=123，与徽章「知识点总数 123」自洽；清除 15 个节点遗留死字段 `cat`（旧分类体系残留、运行时代码零引用）。
+- 语料库枚举归一：`difficulty` `中`→`中级`（15 条）、`doctype` `科普/讲义`→`科普`（1 条）。
+- 学术词表 `stats.per_subfield` 去重重算，各子域加总对齐 `total`（13092 规范词 / 1440 实体），消除「分解加总 ≠ 总数」。
+
+### 🌓 主题跨页继承（`index.html` + 全站 7 页）
+- 根因：静态页用 `chemaiTheme`、React SPA（`#/videos`/`#/explore`/`#/report`）用 `chem-theme`，两键不互通，日间模式经 SPA 路由即断链。
+- `index.html` 加主题桥接：加载时把 `chemaiTheme` 同步进 `chem-theme`（只改 `theme` 字段、保留其余 state）；运行时 `MutationObserver` 监听 `<html data-theme>` 变化写回 `chemaiTheme`。
+- 全站 7 页统一 `<meta name="color-scheme">`，暗色原生控件观感一致。
+
+### 📱 知识图谱手机端（`knowledge.html`）
+- 标签字号随屏等比缩小（`fsScale = min(1, max(0.75, W/700))`），手机端二级/三级标签 12.5→9.4px、中心 17→12.75px。
+- 布局缩放下限 `0.45`（原 `min(W,H)/1400` 无下限，手机端图谱被过度缩小）。
+- `fitTarget` 留白改响应式（`<640px` 时 130/120px），图谱铺满约 83%（原约 61%）。
+- `text-size-adjust:100%` 禁止 iOS 自动放大文字。
+
+### ✅ 验证
+- kg 层级/类目分解加总 123、边/relatedNodes/parent 引用零缺失；语料 445 条目子域/类型/语言求和自洽；词表 per_subfield 加总=total；跨版块子域映射核对完成。
 
 ## v74（2026-08-29）— 反 AI 味根因化 + 身份单一来源 + 性能/移动端/双端优化
 
