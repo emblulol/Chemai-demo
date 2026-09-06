@@ -1,6 +1,6 @@
 # ChemAI — 三草酸合铁(III)酸钾制备实验 智能教学平台
 
-[![Deploy](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://k3fec2o43.clawdbot.ggff.net/)
+[![Deploy](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://emblulol.github.io/Chemai-demo/)
 [![Version](https://img.shields.io/badge/version-v88-blue)](https://github.com/emblulol/Chemai-demo)
 [![FAQ](https://img.shields.io/badge/FAQ-4588条-green)](https://github.com/emblulol/Chemai-demo)
 [![Corpus](https://img.shields.io/badge/语料库-445篇-orange)](https://github.com/emblulol/Chemai-demo)
@@ -180,7 +180,7 @@ chemai-8.23-/
 
 - **SPA 落地页内嵌手册为历史快照**：`assets/index-B-pT4Snc.js`（React 落地页构建产物）内嵌旧 12 章版实验手册（含已删除的「实验报告撰写规范」章），与 `prep.html` 的动态手册（11 章）分叉。React 源码未随仓库维护，暂不重建；**实验手册以 `prep.html` 为准**。
 - **本地视频部署依赖分支构建**：4 部本地视频位于 `三草酸合铁酸钾资料/三草酸合铁酸钾视频资料/`，是否在线可播取决于部署机制（内置「Deploy from a branch」会发布整个仓库根目录；`deploy.yml` 的 `_site` 精简组装不含该文件夹）。
-- **自定义域名已迁移**：旧 `fec2o4.apay.eu.cc` 因被网络按主机名拦截（同一 GitHub IP 下 `github.io` 可访问、唯该域名握手被 reset）而弃用，站点现用专属子域名 **`k3fec2o43.clawdbot.ggff.net`**（`ggff.net` 后缀实测无代理可握手）。DNS 已在 Cloudflare 配置为 DNS-only（灰云）CNAME → `littlealety.github.io`，仓库 Pages 已设自定义域名并启用 Enforce HTTPS。
+- **站点已改用仓库默认 Pages 地址**：`https://emblulol.github.io/Chemai-demo/`（已移除自定义域名 CNAME）。旧自定义域名 `k3fec2o43.clawdbot.ggff.net` 及更早的 `fec2o4.apay.eu.cc` 均已弃用。
 - **网页研究员依赖 CORS 网络**：PubChem / 维基百科为 CORS 开放接口可直连；Bing 经第三方代理（实验性，熔断自动停用）；知网/万方/百度学术/ChemicalBook 无浏览器 CORS，仅提供搜索链接兜底；**MSDS 查询网 / ChemicalBook / PubChem 为外链跳转**（`msdsCardHTML` 前置 somds.com）。
 - **教师命题依赖题库数据**：`generator.html` 的智能生成/自主选题基于 `questions_master.json`（题库池），为 **dev-only 未部署**；且 `.github/workflows/deploy.yml` 的精简 `_site` 组装清单不含生成器与题库——实际上线依赖「从 master 分支构建」发布整仓（`data/` 已含题库则可用，否则生成器功能依赖线上题库存在）。
 - **身份切换停留 index**（v86）：身份卡点击后停留 index 原地刷新身份（徽章 + 角色门控），不再自动跳 main；`main.html` 手册通过导航「查看实验手册」进入。`chem-user` 身份跨页共享（index 与 main 读同一键）。
