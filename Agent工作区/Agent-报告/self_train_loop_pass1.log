@@ -2,9 +2,10 @@
 N=100 ROUNDS=1 GATE=9.5 MODEL=deepseek-v4-flash 题集=self_train_q_n100.json
 [出题] 生成 100 题
   已生成 100
-[出题] 已累积题目总数: 2733
+[出题] 已累积题目总数: 3041
 [审核] 审核 100 题
-  已审核 100
+    LLM重试 1: JSON array not found
+  已审核 92
 [审核] 终审题集已冻结 → Agent工作区/Agent-B-问题生成/self_train_q_n100_final.json
 [校验] 题集完整: 100 题, id 唯一无重复
 固定题集: 100 题 → Agent工作区/Agent-B-问题生成/self_train_q_n100_final.json
@@ -12,24 +13,26 @@ N=100 ROUNDS=1 GATE=9.5 MODEL=deepseek-v4-flash 题集=self_train_q_n100.json
 ===== 自训练 Round 1 / 1 =====
 [回复] 本地回复完成 100
 [评分] 评分 100 题
-[评分] 完成 100 (0分/未评 2)
-  评分: avg=5.17 min=0 低分(<9.5)=93/99
-  Round 1 报告: {"avg":5.17,"min":0,"low":93,"gate":false}
+[评分] 完成 100 
+  评分: avg=4.93 min=0.5 低分(<9.5)=98/99
+  Round 1 报告: {"avg":4.93,"min":0.5,"low":98,"gate":false}
 [回复] 复用 100
-[优化] 低分题 94 道 (<9.5)
-[优化1-检索] 94
-    LLM重试 1: JSON array not found
-    LLM重试 1: JSON 解析失败: Bad control character in string literal in JSON at position 
-[优化2-答案] 53 (按target去重)
-  [Opt2] 未找到 target: 沉淀FeC₂O₄·2H₂O后用热水洗涤至无SO₄²⁻（BaC
-  [注入] Opt1+Opt2 manifest 应用 146 处编辑
-  [注入] FAQ: 3906 → 3906
+[优化] 低分题 99 道 (<9.5)
+    LLM重试 1: JSON 解析失败: Expected ',' or '}' after property value in JSON at position
+[优化1-检索] 99
+[优化2-答案] 56 (按target去重)
+  [Opt2] 未找到 target: 氧化中 按讲义要求滴加完6%H₂O₂后需在40℃水浴中继续搅
+  [Opt2] 未找到 target: 氧化中6% H2O2需在40℃水浴中滴加 已…
+  [Opt2] 未找到 target: 溶解摩尔盐时 为何必须加入数滴3mol/L H₂SO₄
+  [Opt2] 未找到 target: 氧化反应完成后 讲义要求加热至沸保持2分钟以除去过量H₂O₂
+  [注入] Opt1+Opt2 manifest 应用 151 处编辑
+  [注入] FAQ: 4246 → 4246
 === v45 round ===
-词表新增: 94 (canonical=17249 entity=1868)
-插入条目: 94 | FAQ: 3906 → 4000
-子领域: {"光化学应用":12,"分析测定":46,"合成制备":10,"配位化学理论":18,"反应原理":8}
-  [覆盖] 确定性补录 94 条针对性条目
-  FAQ: 3906 → 4000
+词表新增: 120 (canonical=18107 entity=1990)
+插入条目: 99 | FAQ: 4246 → 4345
+子领域: {"分析测定":44,"合成制备":22,"光化学应用":20,"反应原理":3,"配位化学理论":10}
+  [覆盖] 确定性补录 99 条针对性条目
+  FAQ: 4246 → 4345
 
 ========== 最终报告 ==========
 {
@@ -38,20 +41,20 @@ N=100 ROUNDS=1 GATE=9.5 MODEL=deepseek-v4-flash 题集=self_train_q_n100.json
     {
       "round": 1,
       "n": 99,
-      "avgScore": 5.17,
-      "minScore": 0,
-      "lowCount": 93,
+      "avgScore": 4.93,
+      "minScore": 0.5,
+      "lowCount": 98,
       "gatePassed": false,
-      "faqBefore": 3906,
-      "faqAfter": 4000,
+      "faqBefore": 4246,
+      "faqAfter": 4345,
       "opt": {
-        "opt1": 94,
-        "opt2": 53,
+        "opt1": 99,
+        "opt2": 56,
         "opt3": 0
       },
-      "generatedAt": "2026-09-01T02:11:07.873Z"
+      "generatedAt": "2026-09-02T16:03:59.695Z"
     }
   ],
   "model": "deepseek-v4-flash",
-  "generatedAt": "2026-09-01T02:14:51.202Z"
+  "generatedAt": "2026-09-02T16:08:54.431Z"
 }

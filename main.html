@@ -101,7 +101,23 @@ code{font-family:"JetBrains Mono",Consolas,monospace;background:rgba(96,165,250,
 }
 .notice .nlink:hover{filter:brightness(1.1)}
 /* ===== 主体 ===== */
-.page{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:28px 24px 64px}
+.page{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:28px 24px 64px;display:flex;gap:26px;align-items:flex-start}
+.page-main{flex:1;min-width:0}
+/* ===== 左侧侧边栏（学习路径，快速上手）===== */
+.sidebar{width:260px;flex-shrink:0;position:sticky;top:82px;max-height:calc(100vh - 96px);overflow-y:auto;padding:18px 16px;border-radius:16px;border:1px solid var(--bd2);background:linear-gradient(180deg,var(--bg2),transparent);scroll-margin-top:84px}
+.sidebar::-webkit-scrollbar{width:6px}
+.side-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--bd2)}
+.side-head-ico{font-size:20px;line-height:1}
+.side-head-t{font-size:15px;font-weight:700}
+.side-head-s{font-size:11.5px;color:var(--t3)}
+.sidebar .lp-steps{gap:1px}
+.sidebar .lp-steps li{padding:7px 6px}
+.sidebar .lp-steps a{font-size:13px}
+.sidebar .lp-tag{font-size:9.5px;padding:2px 7px}
+@media (max-width:820px){
+  .page{display:block}
+  .sidebar{position:static;width:auto;max-height:none;margin-bottom:20px}
+}
 /* 欢迎横幅 */
 .banner{
   border-radius:var(--r);padding:34px 38px;margin-bottom:30px;position:relative;overflow:hidden;
@@ -421,6 +437,26 @@ footer{margin-top:44px;text-align:center;color:var(--t3);font-size:12.5px;line-h
 </div>
 
 <div class="page">
+  <aside class="sidebar" id="learnPath">
+    <div class="side-head">
+      <span class="side-head-ico">🧭</span>
+      <div>
+        <div class="side-head-t">学习路径</div>
+        <div class="side-head-s">按顺序走，快速上手</div>
+      </div>
+    </div>
+    <ol class="lp-steps">
+      <li><a href="index.html#/videos"><span class="lp-dot" data-ph="pre"></span><span>视频学习</span></a><span class="lp-tag" data-ph="pre">课前</span></li>
+      <li><a href="prep.html#part02"><span class="lp-dot" data-ph="pre"></span><span>原理学习</span></a><span class="lp-tag" data-ph="pre">课前</span></li>
+      <li><a href="index.html#/preview"><span class="lp-dot" data-ph="pre"></span><span>预习测试</span></a><span class="lp-tag" data-ph="pre">课前</span></li>
+      <li><a href="prep.html#part03"><span class="lp-dot" data-ph="mid"></span><span>实验室操作</span></a><span class="lp-tag" data-ph="mid">课中</span></li>
+      <li><a href="prep.html#part04"><span class="lp-dot" data-ph="post"></span><span>实验思考</span></a><span class="lp-tag" data-ph="post">课后</span></li>
+      <li><a href="knowledge.html"><span class="lp-dot" data-ph="post"></span><span>查漏补缺</span></a><span class="lp-tag" data-ph="post">课后</span></li>
+      <li><a href="index.html#/report"><span class="lp-dot" data-ph="post"></span><span>写报告 / 评估</span></a><span class="lp-tag" data-ph="post">课后</span></li>
+    </ol>
+  </aside>
+
+  <div class="page-main">
   <!-- 欢迎横幅（统一页头：kicker + 内容名 + 全流程顺序 + 角色化副标题） -->
   <section class="banner banner-slim">
     <div class="banner-tag">📖 全流程 · 首页总览</div>
@@ -438,16 +474,16 @@ footer{margin-top:44px;text-align:center;color:var(--t3);font-size:12.5px;line-h
     </div>
   </section>
 
-  <!-- 新用户一次性引导：不知道从哪开始？按学习路径走 -->
-  <aside class="path-banner" id="pathBanner" hidden>
-    <div class="pb-ico">🧭</div>
-    <div class="pb-body">
-      <b>不知道从哪开始？按「学习路径」走。</b>
-      <span>从选身份 → 课前预习 → 看视频 → 读原理 → 进实验室 → 课后深化，一路带你完成制备实验。点下方按钮，看每步去到哪个模块。</span>
-    </div>
-    <button class="pb-cta" id="pbCta" type="button">查看路径 →</button>
-    <button class="pb-x" id="pbX" type="button" aria-label="关闭" title="不再提示">✕</button>
-  </aside>
+  <!-- 实验手册（完整版，正文跳转「课前预习 · 实验手册」板块） -->
+  <div class="manual-head">
+    <h2>📖 实验手册全文</h2>
+    <span class="mh-chip">共 11 章 · 42 节</span>
+  </div>
+  <div class="path-banner">
+    <div class="pb-ico">📖</div>
+    <div class="pb-body"><b>完整正文</b> · 目的 → 原理 → 操作 → 性质 → 表征 → 安全 → 拓展</div>
+    <a class="pb-cta" style="display:inline-flex;align-items:center;text-decoration:none" href="prep.html">去读 →</a>
+  </div>
 
   <!-- 快速找：模块 或 手册章节 -->
   <div class="quickfind" id="quickFind">
@@ -539,28 +575,11 @@ footer{margin-top:44px;text-align:center;color:var(--t3);font-size:12.5px;line-h
     </section>
   </div>
 
-  <!-- 学习路径：一条路径走完（参考学习通任务引擎） -->
-  <section class="learnpath" id="learnPath">
-    <div class="sec-title">
-      <h2>🧭 学习路径</h2>
-      <span class="st-sub">新手不知道从哪开始？按这条路径走，每步去哪都标好了</span>
-    </div>
-    <ol class="lp-steps">
-      <li><a href="index.html#identity"><span class="lp-dot" data-ph="all"></span>选身份</a><span class="lp-tag" data-ph="all">全流程</span></li>
-      <li><a href="prep.html"><span class="lp-dot" data-ph="pre"></span>课前预习</a><span class="lp-tag" data-ph="pre">课前</span></li>
-      <li><a href="index.html#/videos"><span class="lp-dot" data-ph="pre"></span>看视频</a><span class="lp-tag" data-ph="pre">课前</span></li>
-      <li><a href="prep.html#part02"><span class="lp-dot" data-ph="pre"></span>读原理（基础原理 + 性质）</a><span class="lp-tag" data-ph="pre">课前</span></li>
-      <li><a href="prep.html#part03"><span class="lp-dot" data-ph="mid"></span>进实验室操作（操作步骤）</a><span class="lp-tag" data-ph="mid">课中</span></li>
-      <li><a href="prep.html#part04"><span class="lp-dot" data-ph="post"></span>课后深化（配合物性质等）</a><span class="lp-tag" data-ph="post">课后</span></li>
-      <li><a href="knowledge.html"><span class="lp-dot" data-ph="post"></span>查漏补缺（知识图谱）</a><span class="lp-tag" data-ph="post">课后</span></li>
-      <li><a href="index.html#/report"><span class="lp-dot" data-ph="post"></span>写报告 / 评估 / 测验</a><span class="lp-tag" data-ph="post">课后</span></li>
-    </ol>
-  </section>
-
   <footer>
     ChemAI · 三草酸合铁酸钾（K₃[Fe(C₂O₄)₃]·3H₂O）制备实验智能教学平台<br/>
     主页 · 实验手册（前往「课前预习 · 实验手册」）
   </footer>
+  </div>
 </div>
 <script>
 (function(){
@@ -841,7 +860,7 @@ function showError(err){
   });
 })();
 fetch("data/manual.json",{cache:'no-store'}).then(function(r){return r;}).then(function(){
-  // 实验手册已移至「课前预习 · 实验手册」板块（完整 10 部分在 prep.html），主页不再渲染
+  // 实验手册正文已跳转至「课前预习 · 实验手册」板块（prep.html），主页不再内联渲染
 }).catch(function(){});
 
 /* ================= 新用户导航：学习路径 / 快速找 / 首访横幅 / 阶段跳转 ================= */
@@ -860,18 +879,6 @@ document.addEventListener("click",function(e){
   if(a.closest("#tocNav"))return;
   e.preventDefault();jumpToChapter(a.getAttribute("href").slice(1));
 });
-/* —— 首访路径横幅（localStorage 关闭即不再提示）—— */
-(function(){
-  var ban=document.getElementById("pathBanner");if(!ban)return;
-  var seen=false;try{seen=!!localStorage.getItem("chemaiPathSeen");}catch(e){}
-  if(!seen)ban.hidden=false;
-  var x=document.getElementById("pbX"),cta=document.getElementById("pbCta");
-  if(x)x.addEventListener("click",function(){ban.hidden=true;try{localStorage.setItem("chemaiPathSeen","1");}catch(e){}});
-  if(cta)cta.addEventListener("click",function(){
-    var lp=document.getElementById("learnPath");
-    if(lp)lp.scrollIntoView({behavior:"smooth",block:"start"});
-  });
-})();
 /* —— 快速找（模块 + 手册章节）—— */
 (function(){
   var MODULES=[

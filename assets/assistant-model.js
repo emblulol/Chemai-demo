@@ -112,7 +112,7 @@
     if(c.analogy) metaParts.push(c.analogy+' 条类比');
     if(trace.label) metaParts.push(trace.label);
     var meta=metaParts.join(' · ');
-    return '<details class="reasoning"'+(trace.open===false?'':' open')+'><summary>🧠 思考链<em class="rc-cnt">'+escText(meta)+'</em></summary>'
+    return '<details class="reasoning"'+(trace.open===false?'':' open')+'><summary>思考链<em class="rc-cnt">'+escText(meta)+'</em></summary>'
       +'<div class="reasoning-body" style="display:flex;flex-direction:column;gap:10px">'+(trace.bodyHTML||'')+'</div></details>';
   }
 
@@ -126,7 +126,7 @@
       ['结论输出','给出依据与置信度，标注来源']
     ];
     var kwsHtml=(kws&&kws.length)?(' · 关键词：'+kws.slice(0,6).map(function(k){return '<code>'+escText(k)+'</code>';}).join(' ')):'';
-    return '<div class="plan" data-role="plan"><div class="plan-title">🧭 执行计划</div>'
+    return '<div class="plan" data-role="plan"><div class="plan-title">执行计划</div>'
       +'<div class="plan-q">'+escText(q)+kwsHtml+'</div>'
       +steps.map(function(s,i){ return '<div class="plan-step" data-s="'+(i+1)+'"><span class="plan-n">'+(i+1)+'</span><div class="plan-st"><b>'+escText(s[0])+'</b><span>'+escText(s[1])+'</span></div></div>'; }).join('')
       +'</div>';

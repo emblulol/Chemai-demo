@@ -2,9 +2,10 @@
 N=101 ROUNDS=1 GATE=9.5 MODEL=deepseek-v4-flash 题集=self_train_q_n101.json
 [出题] 生成 101 题
   已生成 101
-[出题] 已累积题目总数: 2834
+[出题] 已累积题目总数: 3142
 [审核] 审核 101 题
-  已审核 101
+    LLM重试 1: JSON 解析失败: Unterminated string in JSON at position 381 (line 6 column 7
+  已审核 95
 [审核] 终审题集已冻结 → Agent工作区/Agent-B-问题生成/self_train_q_n101_final.json
 [校验] 题集完整: 101 题, id 唯一无重复
 固定题集: 101 题 → Agent工作区/Agent-B-问题生成/self_train_q_n101_final.json
@@ -12,21 +13,22 @@ N=101 ROUNDS=1 GATE=9.5 MODEL=deepseek-v4-flash 题集=self_train_q_n101.json
 ===== 自训练 Round 1 / 1 =====
 [回复] 本地回复完成 101
 [评分] 评分 101 题
-[评分] 完成 101 (0分/未评 3)
-  评分: avg=4.95 min=0 低分(<9.5)=95/100
-  Round 1 报告: {"avg":4.95,"min":0,"low":95,"gate":false}
+[评分] 完成 101 
+  评分: avg=4.89 min=0.5 低分(<9.5)=97/99
+  Round 1 报告: {"avg":4.89,"min":0.5,"low":97,"gate":false}
 [回复] 复用 101
-[优化] 低分题 96 道 (<9.5)
-[优化1-检索] 96
-[优化2-答案] 57 (按target去重)
-  [注入] Opt1+Opt2 manifest 应用 153 处编辑
-  [注入] FAQ: 4000 → 4000
+[优化] 低分题 99 道 (<9.5)
+[优化1-检索] 98
+[优化2-答案] 53 (按target去重)
+  [Opt1] 未找到 target: 氧化中 按讲义要求滴加完6%H2O₂后需在4…
+  [注入] Opt1+Opt2 manifest 应用 150 处编辑
+  [注入] FAQ: 4345 → 4345
 === v45 round ===
-词表新增: 84 (canonical=17493 entity=1897)
-插入条目: 96 | FAQ: 4000 → 4096
-子领域: {"合成制备":19,"分析测定":45,"配位化学理论":9,"光化学应用":18,"反应原理":5}
-  [覆盖] 确定性补录 96 条针对性条目
-  FAQ: 4000 → 4096
+词表新增: 111 (canonical=18448 entity=2022)
+插入条目: 99 | FAQ: 4345 → 4444
+子领域: {"分析测定":44,"光化学应用":12,"合成制备":28,"配位化学理论":11,"反应原理":4}
+  [覆盖] 确定性补录 99 条针对性条目
+  FAQ: 4345 → 4444
 
 ========== 最终报告 ==========
 {
@@ -34,21 +36,21 @@ N=101 ROUNDS=1 GATE=9.5 MODEL=deepseek-v4-flash 题集=self_train_q_n101.json
   "rounds": [
     {
       "round": 1,
-      "n": 100,
-      "avgScore": 4.95,
-      "minScore": 0,
-      "lowCount": 95,
+      "n": 99,
+      "avgScore": 4.89,
+      "minScore": 0.5,
+      "lowCount": 97,
       "gatePassed": false,
-      "faqBefore": 4000,
-      "faqAfter": 4096,
+      "faqBefore": 4345,
+      "faqAfter": 4444,
       "opt": {
-        "opt1": 96,
-        "opt2": 57,
+        "opt1": 98,
+        "opt2": 53,
         "opt3": 0
       },
-      "generatedAt": "2026-09-01T02:21:25.788Z"
+      "generatedAt": "2026-09-02T16:17:13.412Z"
     }
   ],
   "model": "deepseek-v4-flash",
-  "generatedAt": "2026-09-01T02:24:51.006Z"
+  "generatedAt": "2026-09-02T16:21:47.722Z"
 }
