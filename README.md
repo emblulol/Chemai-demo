@@ -1,11 +1,11 @@
 # ChemAI — 三草酸合铁(III)酸钾制备实验 智能教学平台
 
 [![Deploy](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://k3fec2o43.clawdbot.ggff.net/)
-[![Version](https://img.shields.io/badge/version-v88-blue)](https://github.com/LittleAlety/chemai-8.23-)
-[![FAQ](https://img.shields.io/badge/FAQ-4588条-green)](https://github.com/LittleAlety/chemai-8.23-)
-[![Corpus](https://img.shields.io/badge/语料库-445篇-orange)](https://github.com/LittleAlety/chemai-8.23-)
-[![KG](https://img.shields.io/badge/知识图谱-123节点-blueviolet)](https://github.com/LittleAlety/chemai-8.23-)
-[![Videos](https://img.shields.io/badge/本地视频-4部-teal)](https://github.com/LittleAlety/chemai-8.23-)
+[![Version](https://img.shields.io/badge/version-v88-blue)](https://github.com/emblulol/Chemai-demo)
+[![FAQ](https://img.shields.io/badge/FAQ-4588条-green)](https://github.com/emblulol/Chemai-demo)
+[![Corpus](https://img.shields.io/badge/语料库-445篇-orange)](https://github.com/emblulol/Chemai-demo)
+[![KG](https://img.shields.io/badge/知识图谱-123节点-blueviolet)](https://github.com/emblulol/Chemai-demo)
+[![Videos](https://img.shields.io/badge/本地视频-4部-teal)](https://github.com/emblulol/Chemai-demo)
 [![AI 模型](https://img.shields.io/badge/AI神经网络模式-诚实工程架构-green)](./docs/AI模型架构.md)
 
 **ChemAI** 是面向大学化学实验教学的 AI 智能平台，以 **三草酸合铁(III)酸钾 K₃[Fe(C₂O₄)₃]·3H₂O** 制备实验为核心，集成 **LLM-RAG 智能问答、智能体集群、知识图谱可视化、语料库文献检索、掌握度自适应测评、科普探索、本地教学视频、深度问题自学习迭代**等功能。
