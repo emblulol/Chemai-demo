@@ -24,16 +24,24 @@ if(window.MutationObserver){ new MutationObserver(function(){ var v=document.doc
 <link rel="preconnect" href="https://fonts.loli.net"/>
 <link rel="preconnect" href="https://gstatic.loli.net" crossorigin=""/>
 <link href="https://fonts.loli.net/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<!-- FIX: [5] - 性能优化：预取跳转目标（主页/实验手册/手册数据），身份卡点击后进入更快、可交互时间≤500ms -->
+<link rel="prefetch" href="main.html">
+<link rel="prefetch" href="prep.html">
+<link rel="prefetch" href="data/manual.json">
 <style>
 :root{
   --bg:#0a0e1a;--bg2:#111827;--card:#1a2235;--hover:#243049;
   --emerald:#10b981;--teal:#2dd4bf;--purple:#a78bfa;--yellow:#fbbf24;--red:#f87171;--blue:#60a5fa;
-  --t1:#f1f5f9;--t2:#bfcbd9;--t3:#64748b;
+  --t1:#f1f5f9;--t2:#bfcbd9;--t3:#64748b;--nav-bg:rgba(10,14,26,.92);
   --bd:rgba(148,163,184,.08);--bd2:rgba(148,163,184,.15);
   --r:16px;
   --grad-crystal:linear-gradient(135deg,#10b981 0%,#2dd4bf 50%,#60a5fa 100%);
 }
-[data-theme="light"]{color-scheme:light;--bg:#f5f7fa;--bg2:#eaeef4;--card:#ffffff;--hover:#e8ecf2;--t1:#1f2937;--t2:#475569;--t3:#64748b;--bd:rgba(15,23,42,.08);--bd2:rgba(15,23,42,.16)}
+[data-theme="light"]{color-scheme:light;--bg:#f5f7fa;--bg2:#eaeef4;--card:#ffffff;--hover:#e8ecf2;--t1:#1f2937;--t2:#475569;--t3:#64748b;--bd:rgba(15,23,42,.08);--bd2:rgba(15,23,42,.16);--nav-bg:rgba(245,247,250,.92)}
+/* FIX: [1] - 颜色对比度修复：日间模式淡色化学式/徽章加深为深青/深绿，确保与白底对比度≥4.5:1 */
+[data-theme="light"] #landing .formula-chip{color:#0f766e;background:rgba(15,118,110,.08);border-color:rgba(15,118,110,.28)}
+[data-theme="light"] #landing .formula-chip .arr{color:#0f766e}
+[data-theme="light"] #landing .badge{color:#15803d;background:rgba(22,163,74,.1);border-color:rgba(22,163,74,.3)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--t1);font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
@@ -55,7 +63,8 @@ button{font-family:inherit;cursor:pointer}
 #landing{position:relative;z-index:1;display:flex;flex-direction:column;min-height:100vh}
 
 /* ==== 顶部导航 ==== */
-#landing .navbar{position:sticky;top:0;z-index:50;background:rgba(10,14,26,.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--bd2)}
+/* FIX: [2] - 页眉主题色修复：导航栏背景改用主题变量 --nav-bg，日间模式随主题变浅、不再沿用夜间深色 */
+#landing .navbar{position:sticky;top:0;z-index:50;background:var(--nav-bg);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--bd2)}
 #landing .nav-inner{max-width:1280px;margin:0 auto;padding:0 22px;height:62px;display:flex;align-items:center;gap:14px}
 #landing .logo{display:flex;align-items:center;gap:11px;flex-shrink:0}
 #landing .logo-icon{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;background:linear-gradient(135deg,rgba(16,185,129,.25),rgba(45,212,191,.12));border:1px solid rgba(16,185,129,.35);animation:chemaiPulse 3.5s ease-in-out infinite}
@@ -70,7 +79,8 @@ button{font-family:inherit;cursor:pointer}
 #landing .nav-user{display:flex;align-items:center;gap:9px;flex-shrink:0}
 #landing .role-badge{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid var(--bd2);color:var(--t3);background:var(--card);white-space:nowrap;transition:all .25s}
 #landing .role-badge .rdot{width:8px;height:8px;border-radius:50%;background:var(--t3);flex-shrink:0}
-#landing .theme-toggle{background:var(--bg2);border:1px solid var(--bd2);color:var(--t2);width:34px;height:34px;border-radius:10px;cursor:pointer;font-size:15px;display:inline-flex;align-items:center;justify-content:center;transition:.25s;flex-shrink:0;line-height:1}
+/* FIX: [4] - UI 精简：主题切换按钮尺寸统一为 36px 高 / 6px 圆角，比例协调 */
+#landing .theme-toggle{background:var(--bg2);border:1px solid var(--bd2);color:var(--t2);width:36px;height:36px;border-radius:6px;cursor:pointer;font-size:15px;display:inline-flex;align-items:center;justify-content:center;transition:.25s;flex-shrink:0;line-height:1}
 #landing .theme-toggle:hover{border-color:var(--emerald);color:var(--emerald);transform:translateY(-1px)}
 @keyframes chemaiFlow{0%{background-position:0% 0}100%{background-position:220% 0}}
 @keyframes chemaiPulse{0%,100%{box-shadow:0 0 6px rgba(16,185,129,.22)}50%{box-shadow:0 0 18px rgba(45,212,191,.5)}}
@@ -163,8 +173,8 @@ button{font-family:inherit;cursor:pointer}
         <a href="corpus.html">语料库</a>
         <a href="generator.html" data-role-gate="teacher">智能命题</a>
       </div>
+      <!-- FIX: [4] - UI 精简：移除「怎么用」按钮 DOM，剩余主题切换/汉堡按钮保持视觉平衡 -->
       <button class="theme-toggle" id="themeToggleBtn" onclick="toggleTheme()" title="切换白天/夜晚" aria-label="切换主题"></button>
-      <button class="path-btn" data-href="main.html#learnPath" title="还不知道怎么用？按学习路径走">🧭 怎么用</button>
       <button class="hamburger" id="hamburgerBtn" type="button" aria-label="导航菜单">☰</button>
       <div class="nav-user">
         <span class="role-badge" id="roleBadge"><span class="rdot"></span><span id="roleName">未选择身份</span></span>
@@ -182,7 +192,8 @@ button{font-family:inherit;cursor:pointer}
       <div class="formula-chip">(NH<sub>4</sub>)<sub>2</sub>Fe(SO<sub>4</sub>)<sub>2</sub>·6H<sub>2</sub>O <span class="arr">→</span> FeC<sub>2</sub>O<sub>4</sub>·2H<sub>2</sub>O <span class="arr">→</span> K<sub>3</sub>[Fe(C<sub>2</sub>O<sub>4</sub>)<sub>3</sub>]·3H<sub>2</sub>O</div>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#identity">选择身份，开始探索 <span>→</span></a>
-        <a class="btn btn-ghost" href="main.html" onclick="try{localStorage.setItem('chem-user',JSON.stringify({state:{role:'chemistry',isLoggedIn:true}}));}catch(e){}">查看实验手册</a>
+        <!-- FIX: [3] - 跳转链接修正：查看实验手册直接定位到正文锚点 prep.html#manualBoard，跳过封面/目录 -->
+        <a class="btn btn-ghost" href="prep.html#manualBoard" onclick="try{localStorage.setItem('chem-user',JSON.stringify({state:{role:'chemistry',isLoggedIn:true}}));}catch(e){}">查看实验手册</a>
       </div>
       <div class="hero-scroll"><div class="mouse"></div>向下滑动选择身份</div>
     </div>
