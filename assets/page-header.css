@@ -6,14 +6,14 @@
 .banner-tag{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;letter-spacing:.04em;padding:6px 13px;border-radius:999px;border:1px solid;margin-bottom:13px;color:var(--emerald,#10b981);border-color:color-mix(in srgb,var(--emerald,#10b981) 42%,transparent)!important;background:color-mix(in srgb,var(--emerald,#10b981) 12%,transparent)!important}
 .banner h1{font-size:clamp(22px,3.4vw,30px)!important;font-weight:800;line-height:1.2;margin:0 0 10px;font-family:inherit}
 .banner h1 .hl,.banner h1 [class*="grad"]{background:linear-gradient(90deg,var(--emerald,#10b981),var(--teal,#2dd4bf),var(--blue,#60a5fa));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
-/* —— 课前→课中→课后 顺序指示器 —— */
-.phase-steps{display:flex;align-items:center;gap:0;font-size:12.5px;color:var(--t3,#94a3b8);margin:0 0 14px;flex-wrap:wrap}
-.phase-steps .ps{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;border:1px solid var(--bd2,rgba(148,163,184,.15));background:var(--bg2,rgba(148,163,184,.06));font-weight:600;line-height:1;color:var(--t2,#94a3b8)}
+/* FIX: [4] - 页眉导航排版：课前/课中/课后 按钮间距/内边距/字号/圆角统一，激活态加投影更清晰 */
+.phase-steps{display:flex;align-items:center;gap:0;font-size:14px;color:var(--t3,#94a3b8);margin:0 0 14px;flex-wrap:wrap}
+.phase-steps .ps{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;border:1px solid var(--bd2,rgba(148,163,184,.15));background:var(--bg2,rgba(148,163,184,.06));font-weight:600;line-height:1.4;color:var(--t2,#94a3b8);transition:background .2s,border-color .2s}
 .phase-steps .ps.data-ph-pre{color:var(--emerald,#10b981);border-color:color-mix(in srgb,var(--emerald,#10b981) 40%,transparent)}
 .phase-steps .ps.data-ph-mid{color:var(--teal,#2dd4bf);border-color:color-mix(in srgb,var(--teal,#2dd4bf) 40%,transparent)}
 .phase-steps .ps.data-ph-post{color:var(--purple,#a78bfa);border-color:color-mix(in srgb,var(--purple,#a78bfa) 40%,transparent)}
-.phase-steps .ps.cur{color:#03130d!important;background:linear-gradient(135deg,var(--emerald,#10b981),var(--teal,#2dd4bf))!important;border-color:transparent!important;font-weight:800}
-.phase-steps .ps-arrow{margin:0 7px;color:var(--t3,#64748b)}
+.phase-steps .ps.cur{color:#03130d!important;background:linear-gradient(135deg,var(--emerald,#10b981),var(--teal,#2dd4bf))!important;border-color:transparent!important;font-weight:700;box-shadow:0 2px 10px color-mix(in srgb,var(--emerald,#10b981) 35%,transparent)}
+.phase-steps .ps-arrow{margin:0 8px;color:var(--t3,#64748b);font-weight:700}
 .banner-sub{max-width:760px;color:var(--t2,#94a3b8);font-size:14px;line-height:1.7;margin:0 0 14px}
 .banner-stats{display:flex;gap:16px 22px;flex-wrap:wrap;margin-top:2px}
 .banner-stats .bstat{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--t2,#94a3b8);white-space:nowrap}
@@ -24,5 +24,6 @@
 .banner-slim{padding:8px 12px!important;border-radius:12px!important;margin-bottom:10px!important;display:flex!important;align-items:center!important;gap:10px!important;flex-wrap:wrap!important}
 .banner-slim .banner-tag{margin:0!important;font-size:11px!important;padding:3px 9px!important;white-space:nowrap!important}
 .banner-slim h1{font-size:17px!important;margin:0!important;font-weight:800!important;white-space:nowrap!important}
-.banner-slim .phase-steps{margin:0 0 0 auto!important;font-size:11px!important}
+.banner-slim .phase-steps{margin:0 0 0 auto!important;font-size:13px!important}
+.banner-slim .phase-steps .ps{padding:4px 12px;line-height:1.2}
 .banner-slim .banner-sub,.banner-slim #bannerSub,.banner-slim .banner-stats{display:none!important}

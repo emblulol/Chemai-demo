@@ -43,18 +43,5 @@ function phOf(href){for(var i=0;i<PHMAP.length;i++)if(PHMAP[i].re.test(href||'')
   logo.setAttribute('title','返回主页');
 })();
 
-/* 3) 「🧭 怎么用」按钮：data-href 以 # 开头 → 页内平滑滚动；否则跳转 */
-(function(){
-  var btns=document.querySelectorAll('.path-btn');
-  for(var i=0;i<btns.length;i++){(function(b){
-    b.addEventListener('click',function(){
-      var h=b.getAttribute('data-href');
-      if(!h)return;
-      if(h.charAt(0)==='#'){
-        var el=document.getElementById(h.slice(1));
-        if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-      }else location.href=h;
-    });
-  })(btns[i]);}
-})();
+// FIX: [3] - 「🧭 怎么用」按钮已全局移除，删除其 path-btn 事件监听（DOM 已无 .path-btn，此段作废）
 })();

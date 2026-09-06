@@ -32,14 +32,14 @@ if(window.MutationObserver){ new MutationObserver(function(){ var v=document.doc
 :root{
   --bg:#0a0e1a;--bg2:#111827;--card:#1a2235;--hover:#243049;
   --emerald:#10b981;--teal:#2dd4bf;--purple:#a78bfa;--yellow:#fbbf24;--red:#f87171;--blue:#60a5fa;
-  --t1:#f1f5f9;--t2:#bfcbd9;--t3:#64748b;--nav-bg:rgba(10,14,26,.92);
+  --t1:#f1f5f9;--t2:#bfcbd9;--t3:#64748b;--nav-bg:rgba(10,14,26,.92);--chemical-formula-color:#6ee7b7;
   --bd:rgba(148,163,184,.08);--bd2:rgba(148,163,184,.15);
   --r:16px;
   --grad-crystal:linear-gradient(135deg,#10b981 0%,#2dd4bf 50%,#60a5fa 100%);
 }
-[data-theme="light"]{color-scheme:light;--bg:#f5f7fa;--bg2:#eaeef4;--card:#ffffff;--hover:#e8ecf2;--t1:#1f2937;--t2:#475569;--t3:#64748b;--bd:rgba(15,23,42,.08);--bd2:rgba(15,23,42,.16);--nav-bg:rgba(245,247,250,.92)}
+[data-theme="light"]{color-scheme:light;--bg:#f5f7fa;--bg2:#eaeef4;--card:#ffffff;--hover:#e8ecf2;--t1:#1f2937;--t2:#475569;--t3:#64748b;--bd:rgba(15,23,42,.08);--bd2:rgba(15,23,42,.16);--nav-bg:rgba(245,247,250,.92);--chemical-formula-color:#15803d}
 /* FIX: [1] - 颜色对比度修复：日间模式淡色化学式/徽章加深为深青/深绿，确保与白底对比度≥4.5:1 */
-[data-theme="light"] #landing .formula-chip{color:#0f766e;background:rgba(15,118,110,.08);border-color:rgba(15,118,110,.28)}
+[data-theme="light"] #landing .formula-chip{background:rgba(22,163,74,.08);border-color:rgba(22,163,74,.28)}
 [data-theme="light"] #landing .formula-chip .arr{color:#0f766e}
 [data-theme="light"] #landing .badge{color:#15803d;background:rgba(22,163,74,.1);border-color:rgba(22,163,74,.3)}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -97,7 +97,7 @@ button{font-family:inherit;cursor:pointer}
 @keyframes gradFlow{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
 #landing .hero-sub{font-size:clamp(14px,2vw,17px);color:var(--t2);margin-bottom:18px;line-height:1.6}
 #landing .hero-sub b{color:var(--t1);font-weight:600}
-#landing .formula-chip{display:inline-flex;align-items:center;gap:2px;font-family:"JetBrains Mono",Consolas,monospace;font-size:clamp(12px,1.7vw,15px);color:#a5f3fc;background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.22);border-radius:12px;padding:11px 18px;margin-bottom:28px;letter-spacing:.01em;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+#landing .formula-chip{display:inline-flex;align-items:center;gap:2px;font-family:"JetBrains Mono",Consolas,monospace;font-size:clamp(12px,1.7vw,15px);color:var(--chemical-formula-color);background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.22);border-radius:12px;padding:11px 18px;margin-bottom:28px;letter-spacing:.01em;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 #landing .formula-chip .arr{color:var(--teal);margin:0 8px;font-weight:700}
 #landing .hero-cta{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
 #landing .btn{display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:600;padding:13px 26px;border-radius:13px;transition:all .22s;border:1px solid transparent}
@@ -300,7 +300,8 @@ button{font-family:inherit;cursor:pointer}
 <script>
 // ===== hash 子路由：命中命名 React 路由时才接管应用；裸 #/ 或无 hash 一律回到起始界面（landing，index 身份入口）=====
 (function(){
-  var ROUTE=/^#\/(report|explore|quiz|generator|videos|agent)(\/|$)/;
+  // FIX: [2] - 学习路径跳转修正：补充 preview 路由（预习测试/预习检测），否则 #/preview 会落到身份选择页
+  var ROUTE=/^#\/(report|explore|quiz|generator|videos|agent|preview)(\/|$)/;
   var land=document.getElementById("landing");
   var root=document.getElementById("root");
   var cssLoaded=false,jsLoaded=false;

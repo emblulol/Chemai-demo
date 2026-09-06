@@ -15,11 +15,11 @@
 :root{
   --bg:#0a0e1a;--bg2:#111827;--card:#1a2235;--card-hover:#243049;
   --emerald:#10b981;--teal:#2dd4bf;--purple:#a78bfa;--yellow:#fbbf24;--red:#f87171;--blue:#60a5fa;
-  --t1:#f1f5f9;--t2:#bfcbd9;--t3:#64748b;
+  --t1:#f1f5f9;--t2:#bfcbd9;--t3:#64748b;--chemical-formula-color:#6ee7b7;/* FIX: [1] 化学式统一颜色（深色模式，与身份选择页一致） */
   --bd:rgba(148,163,184,.08);--bd2:rgba(148,163,184,.15);
   --r:16px;
 }
-[data-theme="light"]{color-scheme:light;--bg:#f5f7fa;--bg2:#eaeef4;--card:#ffffff;--hover:#e8ecf2;--card-hover:#e8ecf2;--t1:#1f2937;--t2:#475569;--t3:#64748b;--txt:#1f2937;--txt2:#475569;--txt3:#64748b;--bd:rgba(15,23,42,.08);--bd2:rgba(15,23,42,.16);--border:rgba(15,23,42,.08);--border2:rgba(15,23,42,.16);--shadow:0 8px 24px rgba(15,23,42,.08)}[data-theme="light"] .navbar{background:rgba(255,255,255,.82)}.theme-toggle{background:var(--bg2);border:1px solid var(--bd2);color:var(--t2);width:34px;height:34px;border-radius:10px;cursor:pointer;font-size:15px;display:inline-flex;align-items:center;justify-content:center;transition:.25s;flex-shrink:0;line-height:1}.theme-toggle:hover{border-color:var(--em);color:var(--em);transform:translateY(-1px)}body{animation:chemaiFade .45s ease}@keyframes chemaiFade{from{opacity:0}to{opacity:1}}
+[data-theme="light"]{color-scheme:light;--bg:#f5f7fa;--bg2:#eaeef4;--card:#ffffff;--hover:#e8ecf2;--card-hover:#e8ecf2;--t1:#1f2937;--t2:#475569;--t3:#64748b;--txt:#1f2937;--txt2:#475569;--txt3:#64748b;--bd:rgba(15,23,42,.08);--bd2:rgba(15,23,42,.16);--border:rgba(15,23,42,.08);--border2:rgba(15,23,42,.16);--shadow:0 8px 24px rgba(15,23,42,.08);--chemical-formula-color:#15803d}[data-theme="light"] .navbar{background:rgba(255,255,255,.82)}.theme-toggle{background:var(--bg2);border:1px solid var(--bd2);color:var(--t2);width:34px;height:34px;border-radius:10px;cursor:pointer;font-size:15px;display:inline-flex;align-items:center;justify-content:center;transition:.25s;flex-shrink:0;line-height:1}.theme-toggle:hover{border-color:var(--em);color:var(--em);transform:translateY(-1px)}body{animation:chemaiFade .45s ease}@keyframes chemaiFade{from{opacity:0}to{opacity:1}}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -212,7 +212,6 @@ footer{margin-top:44px;text-align:center;color:var(--t3);font-size:12.5px;line-h
       <a href="corpus.html">语料库</a>
     </div>
     <button class="theme-toggle" id="themeToggleBtn" onclick="toggleTheme()" title="切换白天/夜晚" aria-label="切换主题"></button>
-    <button class="path-btn" data-href="main.html#learnPath" title="还不知道怎么用？按学习路径走">🧭 怎么用</button>
     <button class="nav-toggle-mb" id="hamburgerBtn" type="button" aria-label="导航菜单">☰</button>
   </div>
   </div>
@@ -760,7 +759,8 @@ document.addEventListener('DOMContentLoaded',function(){
 </style>
 <style id="manual-md-css">
 /* —— 从 main.html 移植：公式(.fx)/表格(.tbl-wrap)/图片(.sec-figs)/灯箱(.lb) 样式 —— */
-.fx{font-style:normal;color:#6ee7b7;font-weight:500;font-family:"Times New Roman",Georgia,serif;letter-spacing:.2px}
+/* FIX: [1] - 统一化学式颜色：手册正文 .fx 改用变量 --chemical-formula-color，与身份选择页一致 */
+.fx{font-style:normal;color:var(--chemical-formula-color);font-weight:500;font-family:"Times New Roman",Georgia,serif;letter-spacing:.2px}
 .fx sub,.fx sup{font-style:normal;font-size:.72em}
 /* 真分数：上/下堆叠 + 分数线（.fx-num/.fx-den 由 renderFormula 生成，字母用 Times 继承 .fx） */
 .fx-frac{display:inline-flex;flex-direction:column;align-items:center;vertical-align:-.38em;line-height:1.05;margin:0 3px}

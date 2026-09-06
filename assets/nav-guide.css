@@ -28,15 +28,11 @@
 .nav-ph[data-ph=all] {color:var(--ph-all); border-color:color-mix(in srgb,var(--ph-all) 40%,transparent); background:color-mix(in srgb,var(--ph-all) 12%,transparent)}
 @media (max-width:640px){
   .nav-ph{display:none}
-  /* 窄屏：收起「🧭怎么用」与「身份徽章」，只留 logo+主题切换+汉堡，避免导航条被挤爆 */
-  .navbar .path-btn,.navbar .nav-user{display:none}
+  /* 窄屏：收起「身份徽章」，只留 logo+主题切换+汉堡，避免导航条被挤爆（FIX: [3] 已移除怎么用按钮） */
+  .navbar .nav-user{display:none}
 }
 
-/* —— 「🧭 怎么用」按钮（与主题切换并列的次级按钮） —— */
-.path-btn{background:var(--bg2);border:1px solid var(--bd2);color:var(--t2);height:34px;padding:0 12px;
-  border-radius:10px;cursor:pointer;font-size:13px;display:inline-flex;align-items:center;gap:5px;
-  transition:.25s;flex-shrink:0;line-height:1;white-space:nowrap}
-.path-btn:hover{border-color:var(--emerald);color:var(--emerald);transform:translateY(-1px)}
+/* FIX: [3] - 「🧭 怎么用」按钮已全局移除，删除其 .path-btn 样式代码 */
 
 /* —— 汉堡钮（窄屏塌缩用；5 个页面各自带等同样式，此处兜底 generator/index 尚无定义） —— */
 .hamburger{display:none;background:var(--bg2,#0f172a);border:1px solid var(--bd2,rgba(148,163,184,.2));
@@ -44,7 +40,7 @@
   min-width:44px;min-height:44px;align-items:center;justify-content:center;flex-shrink:0;line-height:1}
 
 @media (prefers-reduced-motion:reduce){
-  .nav-links a,.path-btn{transition:none!important}
+  .nav-links a{transition:none!important}
 }
 
 /* ============================================================
